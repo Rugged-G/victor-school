@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor's School Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <p class="logo">
+            <img src="school1.jpg" alt="">
+            VICTOR SCHOOL
+        </p>
+        <div id="sidenav">
+            <nav>
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#about">ABOUT-US</a></li>
+                    <li><a href="#academics">ACADEMICS</a></li>
+                    <li><a href="#gallery">GALLERY</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+                <div class="header-buttons">
+                    <a href="#" class="login-btn" onclick="toggleLogin()">Login</a>
+                    <a href="#" class="register-btn" onclick="toggleRegister()">Register Now</a>
+
+                        <div id="loginFormContainer" class="login-popup">
+                            <div class="login-box">
+                                <h2>Student Portal Login</h2>
+                                <form id="loginForm">
+                                    <input type="text" id="admission number" placeholder="Admission Number" required>
+                                    <input type="password" id="password" placeholder="Password" required>
+                                    <button type="submit">Login</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="registerFormContainer" class="login-popup">
+                            <div class="login-box">
+                                <h2>Student's Registration</h2>
+                                <form id="registerForm">
+                                    <input type="text" id="fullname" placeholder="Full Name" required>
+                                    <input type="text" id="admissionNumber" placeholder="Admission Number" required>
+                                    <input type="text" id="studentClass" placeholder="Class" required>
+                                    <input type="password" id="regPassword" placeholder="Password" required>
+                                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+                                    <button type="submit">Register</button>
+                                </form>
+                            </div>                            
+                        </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id="home" class="hero-slider">
+
+        <div class="slide active">
+            <img src="students learing in classroom.jpg" alt="School Building">
+
+            <div class="hero-text">
+                <h1>WELCOME TO VICTOR SCHOOL</h1>
+                <p>
+                    Providing quality education and building future leaders.
+                </p>
+                <a href="#about" class="hero-btn">Learn More</a>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="successful students.jpg" alt="Students Learning">
+
+            <div class="hero-text">
+                <h1>Excellence In Education</h1>
+                <p>
+                    Developing academic excellence and strong character.
+                </p>
+                <a href="#academics" class="hero-btn">Academics</a>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="beyond classroom.jpg" alt="School Activities">
+
+            <div class="hero-text">
+                <h1>Learning Beyond The Classroom</h1>
+                <p>
+                    Sports, ICT, Science and Leadership Training.
+                </p>
+                <a href="#contact" class="hero-btn">Contact Us</a>
+            </div>
+        </div>
+
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+
+    </section>
+
+    <section id="about" class="about">
+
+        <div class="about-image">
+            <img src="about us logo.png" alt="School Image">
+        </div>
+
+        <div class="about-text">
+            <h2>About Our School</h2>
+
+            <p>
+                Victor's School is committed to academic excellence and character
+                development. We provide a safe and friendly learning environment
+                where students can grow academically and socially.
+            </p>
+
+            <p>
+                Our goal is to help every student discover their talents and achieve
+                success through quality education and practical learning.
+            </p>
+        </div>
+
+    </section>
+
+    <section id="academics" class="academics">
+
+        <div class="academics-title">
+            <h2>Academics</h2>
+            <p>
+                We provide quality education that helps students grow academically,
+                morally, and socially.
+            </p>
+        </div>
+
+        <div class="academics-container">
+
+            <div class="academic-box">
+                <h3>Subjects Offered</h3>
+                <p>
+                    Mathematics, English Language, Basic Science, Civic Education,
+                    Computer Studies, Coding & Programming, Social Studies, and more.
+                </p>
+            </div>
+
+            <div class="academic-box">
+                <h3>Classes & Levels</h3>
+                <p>
+                    We offer Nursery, Primary, and Secondary education with qualified
+                    teachers for each level.
+                </p>
+            </div>
+
+            <div class="academic-box">
+                <h3>Teaching Style</h3>
+                <p>
+                    Our teaching methods are interactive, practical, and student-friendly
+                    to improve understanding.
+                </p>
+            </div>
+
+            <div class="academic-box">
+                <h3>Science Laboratories</h3>
+                <p>
+                    Students perform practical experiments in well-equipped science
+                    laboratories.
+                </p>
+            </div>
+
+            <div class="academic-box">
+                <h3>ICT Training</h3>
+                <p>
+                    We train students in computer operations, digital skills,
+                    and coding/programming.
+                </p>
+            </div>
+
+            <div class="academic-box">
+                <h3>Library</h3>
+                <p>
+                    Our library contains educational books and learning materials
+                    for students and teachers.
+                </p>
+            </div>
+
+            <div class="academic-box">
+                <h3>Examination Success</h3>
+                <p>
+                    Our students achieve excellent results in internal and external
+                    examinations.
+                </p>
+            </div>
+
+            <div class="academic-box">
+                <h3>Qualified Teachers</h3>
+                <p>
+                    We have experienced and dedicated teachers committed to academic
+                    excellence.
+                </p>
+            </div>
+
+            <div class="academic-box">
+                <h3>Extracurricular Activities</h3>
+                <p>
+                    Students participate in sports, debates, music, cultural events,
+                    and other activities.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Email: victorschool@gmail.com</p>
+        <p>Phone: +234 903 055 4315</p>
+        <p>Address: 7, Tijani Street, Iyana-Ipaja Lagos, Nigeria</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fa-solid fa-house"></i>  Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#academics"><i class="fa-solid fa-school-flag"></i>  Academics</a></li>
+                    <li><a href="#gallery"><i class="fa-solid fa-image"></i>  Gallery</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-headset"></i>  Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3>Important Links</h3>
+                <ul>
+                    <li><a href="#">School Calendar</a></li>
+                    <li><a href="#">Admission Form</a></li>
+                    <li><a href="#">Student Portal</a></li>
+                    <li><a href="#">Result Checker</a></li>
+                    <li><a href="#">Library</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3>Facilities</h3>
+                <ul>
+                    <li><a href="#">Science Lab</a></li>
+                    <li><a href="#">ICT Centre</a></li>
+                    <li><a href="#">School Library</a></li>
+                    <li><a href="#">Sports Centre</a></li>
+                    <li><a href="#">School Bus</a></li>
+                </ul>
+            </div>
+        </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Victor School. All Rights Reserved.</p>
+    </div>
+
+</footer>
+    
+<script>
+    const slides = document.querySelectorAll(".slide");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    let current = 0;
+
+function showSlide(index) {
+        slides.forEach(slide => {
+            slide.classList.remove("active");
+        });
+
+        slides[index].classList.add("active");
+}
+
+function nextSlide() {
+    current++;
+    if (current >= slides.length) {
+        current = 0;
+    }
+    showSlide(current);
+}
+
+function prevSlide() {
+    current--;
+    if (current < 0) {
+        current = slides.length - 1;
+    }
+    showSlide(current);
+}
+
+nextBtn.addEventListener("click", () => {
+    nextSlide();
+    resetAutoSlide();
+});
+
+prevBtn.addEventListener("click", () => {
+    prevSlide();
+    resetAutoSlide();
+});
+
+let autoSlide = setInterval(nextSlide, 4000);
+
+function resetAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(nextSlide, 4000);
+}
+</script>
+
+<script>
+function toggleLogin() {
+    document
+        .getElementById("loginFormContainer")
+        .classList.toggle("show");
+}
+
+function toggleRegister() {
+
+    document
+    .getElementById("registerFormContainer")
+    .classList.toggle("show");
+
+}
+
+document
+.getElementById("overlay")
+.addEventListener("click", function(){
+    document
+    .getElementById("loginFormContainer")
+    .classList.remove("show");
+    this.classList.remove("show");
+});
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", function(e){
+    e.preventDefault();
+    localStorage.setItem("loggedInUser", admission);
+    window.location.href = "dashboard.html";
+});
+</script>
+</body>
+</html>
