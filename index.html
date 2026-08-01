@@ -30,7 +30,7 @@
                             <div class="login-box">
                                 <h2>Student Portal Login</h2>
                                 <form id="loginForm">
-                                    <input type="text" id="admission number" placeholder="Admission Number" required>
+                                    <input type="text" id="admissionNumber" placeholder="Admission Number" required>
                                     <input type="password" id="password" placeholder="Password" required>
                                     <button type="submit">Login</button>
                                 </form>
@@ -41,7 +41,7 @@
                                 <h2>Student's Registration</h2>
                                 <form id="registerForm">
                                     <input type="text" id="fullname" placeholder="Full Name" required>
-                                    <input type="text" id="admissionNumber" placeholder="Admission Number" required>
+                                    <input type="text" id="admissionNumbers" placeholder="Admission Number" required>
                                     <input type="text" id="studentClass" placeholder="Class" required>
                                     <input type="password" id="regPassword" placeholder="Password" required>
                                     <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
@@ -230,11 +230,11 @@
             <div class="footer-box">
                 <h3>Important Links</h3>
                 <ul>
-                    <li><a href="#">School Calendar</a></li>
-                    <li><a href="#">Admission Form</a></li>
-                    <li><a href="#">Student Portal</a></li>
-                    <li><a href="#">Result Checker</a></li>
-                    <li><a href="#">Library</a></li>
+                    <li><a href="#"><i class="fa-solid fa-calendar"></i>  School Calendar</a></li>
+                    <li><a href="#"><i class="fa-regular fa-file-lines"></i>  Admission Form</a></li>
+                    <li><a href="#"><i class="fa-solid fa-user-graduate"></i>  Student Portal</a></li>
+                    <li><a href="#"><i class="fa-solid fa-square-poll-vertical"></i>  Result Checker</a></li>
+                    <li><a href="#"><i class="fa-solid fa-folder"></i>  Library</a></li>
                 </ul>
             </div>
             <div class="footer-box">
@@ -302,23 +302,78 @@ function resetAutoSlide() {
     clearInterval(autoSlide);
     autoSlide = setInterval(nextSlide, 4000);
 }
-</script>
 
-<script>
-function toggleLogin() {
-    document
-        .getElementById("loginFormContainer")
-        .classList.toggle("show");
-}
+document.getElementById("loginForm")
+.addEventListener("submit", function(e){
+    e.preventDefault();
+    const admission = document.getElementById("admissionNumber").value;
+    const password = document.getElementById("password").value;
+    const student = JSON.parse(localStorage.getItem(admission));
+    if(student && student.password === password){
+        localStorage.setItem("loggedInUser", admission);
+        alert("Login Successful");
+        window.location.href = "dashboard.html";
+    }else{
+        alert("Invalid Admission Number or Password");
+    }
+});
 
-function toggleRegister() {
 
-    document
-    .getElementById("registerFormContainer")
-    .classList.toggle("show");
 
-}
 
+document.getElementById("registerForm")
+.addEventListener("submit", function(e){
+    e.preventDefault();
+    const fullname = document.getElementById("fullname").value;
+    const admission = document.getElementById("admissionNumbers").value;
+    const studentClass = document.getElementById("studentClass").value;
+    const password = document.getElementById("regPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    if(password !== confirmPassword){
+        alert("Passwords do not match.");
+        return;
+    }
+    const student = {
+        fullname,
+        admission,
+        studentClass,
+        password
+    };
+    localStorage.setItem(admission, JSON.stringify(student));
+    alert("Registration Successful!");
+    document.getElementById("registerForm").reset();
+});
+
+
+
+
+
+document.addEventListener("click", function (e) {
+    const loginPopup = document.getElementById("loginFormContainer");
+    const registerPopup = document.getElementById("registerFormContainer");
+
+    // Close login popup if you click outside it
+    if (
+        loginPopup.classList.contains("show") &&
+        !loginPopup.contains(e.target) &&
+        !e.target.closest(".login-btn")
+    ) {
+        loginPopup.classList.remove("show");
+    }
+
+    // Close register popup if you click outside it
+    if (
+        registerPopup.classList.contains("show") &&
+        !registerPopup.contains(e.target) &&
+        !e.target.closest(".register-btn")
+    ) {
+        registerPopup.classList.remove("show");
+    }
+});
+
+
+
+/***
 document
 .getElementById("overlay")
 .addEventListener("click", function(){
@@ -327,14 +382,25 @@ document
     .classList.remove("show");
     this.classList.remove("show");
 });
+**/
 
-document
-.getElementById("loginForm")
-.addEventListener("submit", function(e){
-    e.preventDefault();
-    localStorage.setItem("loggedInUser", admission);
-    window.location.href = "dashboard.html";
-});
+
+function toggleLogin() {
+    document.getElementById("loginFormContainer").classList.add("show");
+}
+
+function toggleRegister() {
+    document.getElementById("registerFormContainer").classList.add("show");
+}
+
+function closeLogin() {
+    document.getElementById("loginFormContainer").classList.remove("show");
+}
+
+function closeRegister() {
+    document.getElementById("registerFormContainer").classList.remove("show");
+}
+
 </script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="welcome"></h1>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+const admission = localStorage.getItem("loggedInUser");
+if(!admission){
+    window.location.href="index.html";
+}
+
+const student = JSON.parse(localStorage.getItem(admission));
+document.getElementById("welcome").innerHTML =
+"Welcome " + student.fullname;
+
+function logout(){
+    localStorage.removeItem("loggedInUser");
+    window.location.href="index.html";
+}
+</script>
+</body>
+</html>

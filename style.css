@@ -437,9 +437,7 @@ nav ul li a:hover{
     background: #050d18;
 }
 
-/* Responsive */
 @media screen and (max-width:991px){
-
     .navbar{
         padding:15px 25px;
         flex-wrap:wrap;
