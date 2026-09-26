@@ -341,26 +341,228 @@ nav ul li a:hover{
 /* Contact */
 .contact{
     width: 100%;
-    padding: 80px 8%;
-    text-align: center;
+    padding: 90px 8%;
     background: white;
 }
 
-.contact h2{
+.contact-title{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-title h2{
     font-size: 40px;
     color: #0d1b2a;
+    margin-bottom: 12px;
+}
+
+.contact-title p{
+    color: #667085;
+    font-size: 16px;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+.contact-container{
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: stretch;
+}
+
+
+/* Contact Form */
+
+.contact-form{
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.contact-form h3{
+    font-size: 25px;
+    color: #0d1b2a;
+    margin-bottom: 25px;
+}
+
+.input-group{
     margin-bottom: 20px;
 }
 
-.contact p{
-    color: #555;
-    margin-bottom: 10px;
-    font-size: 18px;
+.input-group label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #344054;
 }
+
+.input-group input,
+.input-group textarea{
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.3s;
+}
+
+.input-group input{
+    height: 48px;
+}
+
+.input-group textarea{
+    resize: vertical;
+    min-height: 140px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+
+/* Send Button */
+
+.contact-btn{
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-btn i{
+    margin-right: 8px;
+}
+
+.contact-btn:hover{
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+
+/* Contact Information */
+
+.contact-info{
+    background: black;
+    padding: 35px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.contact-info h3{
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.contact-intro{
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+
+/* Information Cards */
+
+.info-card{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.info-icon{
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    background: #2563eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+}
+
+.info-card h4{
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.info-card p{
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* School Hours */
+
+.contact-hours{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.contact-hours > i{
+    font-size: 25px;
+    color: #60a5fa;
+}
+
+.contact-hours h4{
+    margin-bottom: 5px;
+}
+
+.contact-hours p{
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+
+/* Contact Responsive */
+
+@media screen and (max-width: 768px){
+
+    .contact{
+        padding: 60px 20px;
+    }
+
+    .contact-title h2{
+        font-size: 30px;
+    }
+
+    .contact-container{
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-form,
+    .contact-info{
+        padding: 25px;
+    }
+
+}
+
 
 /* Footer */
 .footer{
-    background: #021023;
+    background: black;
     color: white;
     position: relative;
 }
@@ -434,13 +636,16 @@ nav ul li a:hover{
     text-align: center;
     padding: 20px;
     border-top: 1px solid rgba(255,255,255,0.1);
-    background: #050d18;
+    background: black;
 }
 
 @media screen and (max-width:991px){
     .navbar{
-        padding:15px 25px;
-        flex-wrap:wrap;
+        padding:10px 15px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
     }
 
     nav{
