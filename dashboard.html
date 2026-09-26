@@ -1,340 +1,891 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Student Dashboard - Victor School</title>
 
-    <link rel="stylesheet" href="dashboard.css">
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
 
-        <div class="logo">
-            <img src="school1.jpg" alt="Victor School Logo">
-            <span>VICTOR SCHOOL</span>
+    <!-- =========================
+         MOBILE OVERLAY
+    ========================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-logo">
+
+            <img
+                src="school1.jpg"
+                alt="Victor School"
+            >
+
+            <div>
+
+                <strong>VICTOR SCHOOL</strong>
+
+                <span>Student Portal</span>
+
+            </div>
+
         </div>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="index.html#about">About Us</a>
-            <a href="index.html#academics">Academics</a>
-            <a href="index.html#gallery">Gallery</a>
-            <a href="index.html#contact">Contact</a>
-        </nav>
-
-        <button id="logoutBtn" class="logout-btn">
-            Logout
-        </button>
-
-    </header>
 
 
-    <!-- DASHBOARD HERO -->
-    <section class="dashboard-hero">
+        <div class="sidebar-menu">
 
-        <div class="hero-content">
-
-            <span class="dashboard-tag">
-                STUDENT PORTAL
-            </span>
-
-            <h1 id="welcome">
-                Welcome, Student
-            </h1>
-
-            <p>
-                Welcome to your Victor School student dashboard.
-                Access your student information and school services
-                from one place.
+            <p class="menu-title">
+                MAIN MENU
             </p>
 
-        </div>
 
-    </section>
+            <a
+                href="dashboard.html"
+                class="menu-link active"
+            >
+
+                <span class="menu-icon">
+                    🏠
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
 
 
-    <!-- DASHBOARD CONTENT -->
-    <main class="dashboard-container">
+            <a
+                href="#"
+                class="menu-link"
+            >
 
-        <div class="section-title">
-            <span>MY ACCOUNT</span>
-            <h2>Student Information</h2>
-            <p>
-                Your registered student details are shown below.
-            </p>
-        </div>
-
-
-        <div class="student-grid">
-
-            <div class="student-card">
-
-                <div class="card-icon">
+                <span class="menu-icon">
                     👤
-                </div>
+                </span>
 
-                <div>
-                    <span>Full Name</span>
-                    <h3 id="studentName">Loading...</h3>
-                </div>
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="menu-link"
+            >
+
+                <span class="menu-icon">
+                    📚
+                </span>
+
+                <span>
+                    Academic Records
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="menu-link"
+            >
+
+                <span class="menu-icon">
+                    📝
+                </span>
+
+                <span>
+                    Results
+                </span>
+
+            </a>
+
+
+            <p class="menu-title portal-title">
+                SCHOOL
+            </p>
+
+
+            <a
+                href="#"
+                class="menu-link"
+            >
+
+                <span class="menu-icon">
+                    📢
+                </span>
+
+                <span>
+                    Announcements
+                </span>
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="menu-link"
+            >
+
+                <span class="menu-icon">
+                    💬
+                </span>
+
+                <span>
+                    Contact School
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                id="logoutBtn"
+                class="logout-link"
+            >
+
+                <span class="menu-icon">
+                    🚪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+            >
+                ☰
+            </button>
+
+
+            <div class="topbar-title">
+
+                <span>
+                    STUDENT PORTAL
+                </span>
+
+                <h2>
+                    Dashboard
+                </h2>
 
             </div>
 
 
-            <div class="student-card">
+            <div class="student-mini">
 
-                <div class="card-icon">
+                <div class="student-avatar">
+                    <span id="avatarLetter">
+                        S
+                    </span>
+                </div>
+
+                <div class="student-mini-info">
+
+                    <strong id="topStudentName">
+                        Student
+                    </strong>
+
+                    <span>
+                        Student
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             DASHBOARD CONTENT
+        ========================== -->
+
+        <section class="dashboard-content">
+
+
+            <!-- WELCOME -->
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <span class="welcome-label">
+                        WELCOME BACK
+                    </span>
+
+                    <h1 id="welcome">
+                        Welcome, Student
+                    </h1>
+
+                    <p>
+                        Manage your student information,
+                        academic records and school updates
+                        from your portal.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-decoration">
                     🎓
                 </div>
 
+            </div>
+
+
+
+            <!-- =========================
+                 STUDENT OVERVIEW
+            ========================== -->
+
+            <div class="section-heading">
+
                 <div>
-                    <span>Admission Number</span>
-                    <h3 id="studentAdmission">Loading...</h3>
+
+                    <span>
+                        OVERVIEW
+                    </span>
+
+                    <h2>
+                        Student Information
+                    </h2>
+
                 </div>
 
             </div>
 
 
-            <div class="student-card">
+            <div class="info-grid">
 
-                <div class="card-icon">
-                    📚
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Full Name
+                        </span>
+
+                        <strong id="studentName">
+                            Loading...
+                        </strong>
+
+                    </div>
+
                 </div>
 
-                <div>
-                    <span>Class</span>
-                    <h3 id="studentClass">Loading...</h3>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🎓
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Admission Number
+                        </span>
+
+                        <strong id="studentAdmission">
+                            Loading...
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Class
+                        </span>
+
+                        <strong id="studentClass">
+                            Loading...
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Account Status
+                        </span>
+
+                        <strong class="status-active">
+                            Active
+                        </strong>
+
+                    </div>
+
                 </div>
 
             </div>
 
 
-            <div class="student-card">
 
-                <div class="card-icon">
-                    ✓
-                </div>
+            <!-- =========================
+                 QUICK ACCESS
+            ========================== -->
+
+            <div class="section-heading quick-heading">
 
                 <div>
-                    <span>Account Status</span>
-                    <h3 class="active-status">
-                        Active
+
+                    <span>
+                        QUICK ACCESS
+                    </span>
+
+                    <h2>
+                        School Services
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="services-grid">
+
+
+                <a
+                    href="#"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        My Profile
                     </h3>
+
+                    <p>
+                        View and manage your
+                        student information.
+                    </p>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="#"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Academic Records
+                    </h3>
+
+                    <p>
+                        Access your academic
+                        information and records.
+                    </p>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="#"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        📝
+                    </div>
+
+                    <h3>
+                        Results
+                    </h3>
+
+                    <p>
+                        View your examination
+                        and academic results.
+                    </p>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="#"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        📢
+                    </div>
+
+                    <h3>
+                        Announcements
+                    </h3>
+
+                    <p>
+                        Stay updated with the
+                        latest school information.
+                    </p>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="contact.html"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        💬
+                    </div>
+
+                    <h3>
+                        Contact School
+                    </h3>
+
+                    <p>
+                        Contact the school for
+                        questions or assistance.
+                    </p>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PORTAL NOTICE
+            ========================== -->
+
+            <div class="notice-card">
+
+                <div class="notice-icon">
+                    📢
+                </div>
+
+                <div>
+
+                    <span>
+                        IMPORTANT
+                    </span>
+
+                    <h3>
+                        Welcome to the Student Portal
+                    </h3>
+
+                    <p>
+                        More student services and
+                        academic features will be
+                        available here as the portal
+                        continues to develop.
+                    </p>
+
                 </div>
 
             </div>
 
-        </div>
-
-
-        <!-- QUICK LINKS -->
-        <section class="quick-section">
-
-            <div class="section-title">
-                <span>SCHOOL SERVICES</span>
-                <h2>Quick Access</h2>
-            </div>
-
-
-            <div class="quick-grid">
-
-                <a href="records.html" class="quick-card">
-                    <div>📖</div>
-                    <h3>Academic Records</h3>
-                    <p>View your academic information.</p>
-                </a>
-
-
-                <a href="announcement.html" class="quick-card">
-                    <div>📢</div>
-                    <h3>Announcements</h3>
-                    <p>Stay updated with school news.</p>
-                </a>
-
-
-                <a href="examination.html" class="quick-card">
-                    <div>📝</div>
-                    <h3>Examinations</h3>
-                    <p>View examination information.</p>
-                </a>
-
-
-                <a href="contact.html" class="quick-card">
-                    <div>💬</div>
-                    <h3>Contact School</h3>
-                    <p>Get in touch with the school.</p>
-                </a>
-
-            </div>
 
         </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <span>
+                © 2026 Victor School
+            </span>
+
+            <span>
+                Student Portal
+            </span>
+
+        </footer>
+
 
     </main>
 
 
-    <!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-box">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#home"><i class="fa-solid fa-house"></i>  Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#academics"><i class="fa-solid fa-school-flag"></i>  Academics</a></li>
-                <li><a href="#gallery"><i class="fa-solid fa-image"></i>  Gallery</a></li>
-                <li><a href="#contact"><i class="fa-solid fa-headset"></i>  Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-box">
-            <h3>Important Links</h3>
-            <ul>
-                <li><a href="#"><i class="fa-solid fa-calendar"></i>  School Calendar</a></li>
-                <li><a href="#"><i class="fa-regular fa-file-lines"></i>  Admission Form</a></li>
-                <li><a href="#"><i class="fa-solid fa-user-graduate"></i>  Student Portal</a></li>
-                <li><a href="#"><i class="fa-solid fa-square-poll-vertical"></i>  Result Checker</a></li>
-                <li><a href="#"><i class="fa-solid fa-folder"></i>  Library</a></li>
-            </ul>
-        </div>
-        <div class="footer-box">
-            <h3>Facilities</h3>
-            <ul>
-                <li><a href="#">Science Lab</a></li>
-                <li><a href="#">ICT Centre</a></li>
-                <li><a href="#">School Library</a></li>
-                <li><a href="#">Sports Centre</a></li>
-                <li><a href="#">School Bus</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Victor School. All Rights Reserved.</p>
-    </div>
-</footer>
-    <!-- FIREBASE -->
+
+    <!-- =========================
+         FIREBASE
+    ========================== -->
+
     <script type="module">
 
-        import { auth, db } from "./firebase.js";
+        import {
+            auth,
+            db
+        } from "./firebase.js";
+
 
         import {
             onAuthStateChanged,
             signOut
-        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+        } from
+        "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
 
         import {
             doc,
             getDoc
-        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+        } from
+        "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-        /* CHECK LOGIN */
 
-        onAuthStateChanged(auth, async (user) => {
+        /* =========================
+           SIDEBAR
+        ========================== */
 
-            if (!user) {
+        const sidebar =
+            document.getElementById("sidebar");
 
-                window.location.href = "./index.html";
+        const overlay =
+            document.getElementById("sidebarOverlay");
 
-                return;
-            }
-
-
-            try {
-
-                const studentRef =
-                    doc(db, "students", user.uid);
+        const menuToggle =
+            document.getElementById("menuToggle");
 
 
-                const studentSnap =
-                    await getDoc(studentRef);
+        menuToggle.addEventListener(
+            "click",
+            () => {
 
+                sidebar.classList.toggle("open");
 
-                if (!studentSnap.exists()) {
-
-                    alert("Student record not found.");
-
-                    await signOut(auth);
-
-                    window.location.href = "./index.html";
-
-                    return;
-                }
-
-
-                const student =
-                    studentSnap.data();
-
-
-                /* DISPLAY STUDENT */
-
-                document.getElementById("welcome").textContent =
-                    "Welcome, " + student.fullname;
-
-
-                document.getElementById("studentName").textContent =
-                    student.fullname;
-
-
-                document.getElementById("studentAdmission").textContent =
-                    student.admissionNumber;
-
-
-                document.getElementById("studentClass").textContent =
-                    student.studentClass;
+                overlay.classList.toggle("show");
 
             }
+        );
 
-            catch (error) {
 
-                console.error(
-                    "Dashboard error:",
-                    error
-                );
+        overlay.addEventListener(
+            "click",
+            () => {
 
-                alert(
-                    "There was a problem loading your dashboard."
-                );
+                sidebar.classList.remove("open");
+
+                overlay.classList.remove("show");
 
             }
+        );
 
-        });
 
 
-        /* LOGOUT */
+        /* =========================
+           FIREBASE AUTH
+        ========================== */
 
-        document
-            .getElementById("logoutBtn")
-            .addEventListener("click", async () => {
+        onAuthStateChanged(
+            auth,
+            async (user) => {
 
-                try {
-
-                    await signOut(auth);
-
-                    sessionStorage.removeItem(
-                        "studentUID"
-                    );
+                if (!user) {
 
                     window.location.href =
                         "./index.html";
 
+                    return;
+
                 }
+
+
+                try {
+
+                    const studentRef =
+                        doc(
+                            db,
+                            "students",
+                            user.uid
+                        );
+
+
+                    const studentSnap =
+                        await getDoc(studentRef);
+
+
+                    if (
+                        !studentSnap.exists()
+                    ) {
+
+                        alert(
+                            "Student record not found."
+                        );
+
+
+                        await signOut(auth);
+
+
+                        window.location.href =
+                            "./index.html";
+
+
+                        return;
+
+                    }
+
+
+                    const student =
+                        studentSnap.data();
+
+
+
+                    /* STUDENT NAME */
+
+                    document
+                        .getElementById(
+                            "welcome"
+                        )
+                        .textContent =
+                        "Welcome, " +
+                        student.fullname;
+
+
+                    document
+                        .getElementById(
+                            "studentName"
+                        )
+                        .textContent =
+                        student.fullname;
+
+
+                    document
+                        .getElementById(
+                            "topStudentName"
+                        )
+                        .textContent =
+                        student.fullname;
+
+
+                    document
+                        .getElementById(
+                            "studentAdmission"
+                        )
+                        .textContent =
+                        student.admissionNumber;
+
+
+                    document
+                        .getElementById(
+                            "studentClass"
+                        )
+                        .textContent =
+                        student.studentClass;
+
+
+
+                    /* AVATAR LETTER */
+
+                    document
+                        .getElementById(
+                            "avatarLetter"
+                        )
+                        .textContent =
+                        student.fullname
+                            .charAt(0)
+                            .toUpperCase();
+
+                }
+
 
                 catch (error) {
 
                     console.error(
-                        "Logout error:",
+                        "Dashboard error:",
                         error
                     );
 
+
+                    alert(
+                        "There was a problem loading your dashboard."
+                    );
+
                 }
+
+            }
+        );
+
+
+
+        /* =========================
+           LOGOUT
+        ========================== */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    try {
+
+                        await signOut(auth);
+
+                        sessionStorage.removeItem(
+                            "studentUID"
+                        );
+
+
+                        window.location.href =
+                            "./index.html";
+
+                    }
+
+                    catch (error) {
+
+                        console.error(
+                            "Logout error:",
+                            error
+                        );
+
+                    }
+
+                }
+            );
+
+
+
+        /* =========================
+           CLOSE SIDEBAR AFTER LINK
+        ========================== */
+
+        document
+            .querySelectorAll(".menu-link")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        sidebar.classList.remove(
+                            "open"
+                        );
+
+                        overlay.classList.remove(
+                            "show"
+                        );
+
+                    }
+                );
 
             });
 
     </script>
 
 </body>
+
 </html>

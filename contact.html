@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Victor School</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="school1.jpg" alt="Victor School Logo">
+            <span>VICTOR SCHOOL</span>
+        </div>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="dashboard.html">My Account</a>
+            <a href="contact.html" class="active">
+                Contact
+            </a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">
+            Logout
+        </button>
+    </header>
+    <!-- CONTACT HERO -->
+    <section class="contact-hero">
+        <div class="hero-content">
+            <span>STUDENT PORTAL</span>
+            <h1>
+                Get in Touch
+            </h1>
+            <p>
+                Have a question or need assistance?
+                Contact Victor School and we'll be happy
+                to help you.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CONTACT SECTION -->
+
+    <main class="contact-container">
+
+
+        <div class="section-title">
+
+            <span>CONTACT US</span>
+
+            <h2>
+                We're Here To Help
+            </h2>
+
+            <p>
+                You can contact the school using any of
+                the options below.
+            </p>
+
+        </div>
+
+
+
+        <div class="contact-grid">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>School Address</h3>
+
+                        <p>
+                            Victor School<br>
+                            Nigeria
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        📞
+                    </div>
+
+                    <div>
+
+                        <h3>Phone Number</h3>
+
+                        <p>
+                            +234 000 000 0000
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        ✉️
+                    </div>
+
+                    <div>
+
+                        <h3>Email Address</h3>
+
+                        <p>
+                            info@victorschool.com
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        🕒
+                    </div>
+
+                    <div>
+
+                        <h3>School Hours</h3>
+
+                        <p>
+                            Monday - Friday<br>
+                            8:00 AM - 4:00 PM
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="contact-form-box">
+
+                <h2>
+                    Send Us a Message
+                </h2>
+
+                <p>
+                    Fill in the form below and the school
+                    can get back to you.
+                </p>
+
+
+                <form id="contactForm">
+
+                    <div class="input-group">
+
+                        <label>Your Name</label>
+
+                        <input
+                            type="text"
+                            id="contactName"
+                            placeholder="Your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Subject</label>
+
+                        <input
+                            type="text"
+                            id="contactSubject"
+                            placeholder="Message subject"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Message</label>
+
+                        <textarea
+                            id="contactMessage"
+                            rows="6"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button type="submit">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <h2>VICTOR SCHOOL</h2>
+
+                <p>
+                    Building academic excellence,
+                    character and a brighter future.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Student Portal</h3>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="dashboard.html">
+                    My Account
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>School</h3>
+
+                <a href="index.html">
+                    School Website
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Victor School. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- FIREBASE -->
+
+    <script type="module">
+
+        import { auth }
+        from "./firebase.js";
+
+        import {
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+        /* CHECK LOGIN */
+
+        onAuthStateChanged(auth, (user) => {
+
+            if (!user) {
+
+                window.location.href =
+                    "./index.html";
+
+            }
+
+        });
+
+
+
+        /* LOGOUT */
+
+        document
+            .getElementById("logoutBtn")
+            .addEventListener("click", async () => {
+
+                try {
+
+                    await signOut(auth);
+
+                    sessionStorage.removeItem(
+                        "studentUID"
+                    );
+
+                    window.location.href =
+                        "./index.html";
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Logout error:",
+                        error
+                    );
+
+                }
+
+            });
+
+
+
+        /* CONTACT FORM */
+
+        document
+            .getElementById("contactForm")
+            .addEventListener("submit", (e) => {
+
+                e.preventDefault();
+
+                alert(
+                    "Your message has been received. Thank you for contacting Victor School."
+                );
+
+                e.target.reset();
+
+            });
+
+    </script>
+
+
+</body>
+</html>
