@@ -1,328 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Contact School | Victor School</title>
 
-    <link
-        rel="stylesheet"
-        href="dashboard.css">
-
-    <script
-        type="module"
-        src="portal.js"
-        defer>
-    </script>
-
+    <link rel="stylesheet" href="dashboard.css">
 </head>
-
 
 <body>
 
-
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay">
-    </div>
-
+    <!-- MOBILE OVERLAY -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <!-- SIDEBAR -->
-    <aside
-        class="sidebar"
-        id="sidebar">
+    <aside class="sidebar" id="sidebar">
 
-
-        <div class="school-brand">
-
-            <img
-                src="school1.jpg"
-                alt="Victor School Logo">
-
+        <div class="sidebar-logo">
+            <img src="school1.jpg" alt="Victor School">
             <div>
-
-                <h2>
-                    VICTOR SCHOOL
-                </h2>
-
-                <span>
-                    Student Portal
-                </span>
-
+                <strong>VICTOR SCHOOL</strong>
+                <span>Student Portal</span>
             </div>
-
         </div>
-
 
         <nav class="sidebar-nav">
 
-
-            <a
-                href="dashboard.html"
-                class="nav-link">
-
-                <span>🏠</span>
-                <span>Dashboard</span>
-
+            <a href="dashboard.html" class="nav-link">
+                <span>⌂</span>
+                Dashboard
             </a>
 
-
-            <a
-                href="profile.html"
-                class="nav-link">
-
+            <a href="profile.html" class="nav-link">
                 <span>👤</span>
-                <span>My Profile</span>
-
+                My Profile
             </a>
 
-
-            <a
-                href="academics.html"
-                class="nav-link">
-
+            <a href="academics.html" class="nav-link">
                 <span>📚</span>
-                <span>Academics</span>
-
+                Academics
             </a>
 
-
-            <a
-                href="results.html"
-                class="nav-link">
-
+            <a href="results.html" class="nav-link">
                 <span>📊</span>
-                <span>Results</span>
-
+                Results
             </a>
 
-
-            <a
-                href="timetable.html"
-                class="nav-link">
-
-                <span>📅</span>
-                <span>Timetable</span>
-
+            <a href="timetable.html" class="nav-link">
+                <span>🗓</span>
+                Timetable
             </a>
 
-
-            <a
-                href="announcements.html"
-                class="nav-link">
-
-                <span>📢</span>
-                <span>Announcements</span>
-
+            <a href="announcements.html" class="nav-link">
+                <span>🔔</span>
+                Announcements
             </a>
 
-
-            <a
-                href="contact.html"
-                class="nav-link active">
-
-                <span>📞</span>
-                <span>Contact School</span>
-
+            <a href="contact.html" class="nav-link active">
+                <span>✉</span>
+                Contact School
             </a>
-
 
         </nav>
 
-
         <div class="sidebar-bottom">
-
-            <button
-                id="logoutBtn"
-                class="logout-btn">
-
-                <span>🚪</span>
+            <button id="logoutBtn" class="logout-btn">
+                <span>↪</span>
                 Logout
-
             </button>
-
         </div>
-
 
     </aside>
 
 
-    <!-- MAIN -->
+    <!-- MAIN AREA -->
     <main class="main-content">
 
-
+        <!-- TOP BAR -->
         <header class="topbar">
 
-
-            <button
-                class="menu-btn"
-                id="menuBtn">
-
+            <button class="menu-btn" id="menuBtn">
                 ☰
-
             </button>
 
-
             <div class="topbar-title">
+                <h3>Contact School</h3>
+                <p>We're here to help you</p>
+            </div>
 
-                <h3>
-                    Contact
-                </h3>
+            <div class="topbar-student">
+
+                <div class="student-avatar" id="studentAvatar">
+                    S
+                </div>
+
+                <div>
+                    <strong id="topStudentName">Student</strong>
+                    <span id="topStudentClass">Student</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTACT CONTENT -->
+        <section class="contact-page">
+
+            <div class="contact-heading">
+
+                <h1>Contact Us</h1>
 
                 <p>
-                    Victor School
+                    Have questions or need more information about Victor School?
+                    We would love to hear from you.
                 </p>
 
             </div>
 
 
-            <div class="student-mini-profile">
+            <div class="contact-layout">
 
+                <!-- MESSAGE FORM -->
+                <div class="contact-form-card">
 
-                <div
-                    class="student-avatar"
-                    id="studentAvatar">
+                    <h2>Send us a message</h2>
 
-                    V
+                    <form id="contactForm">
 
-                </div>
+                        <div class="form-group">
+                            <label for="contactName">
+                                Full Name
+                            </label>
 
-
-                <div class="mini-info">
-
-                    <strong id="topStudentName">
-                        Loading...
-                    </strong>
-
-                    <span id="topStudentClass">
-                        Student
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-        </header>
-
-
-        <div class="dashboard-container">
-
-
-            <section>
-
-
-                <div class="section-header">
-
-                    <p class="small-heading">
-                        GET IN TOUCH
-                    </p>
-
-                    <h1>
-                        Contact School
-                    </h1>
-
-                    <p>
-                        Need help? Contact the school
-                        administration.
-                    </p>
-
-                </div>
-
-
-                <div class="contact-grid">
-
-
-                    <!-- ADDRESS -->
-                    <div class="contact-card">
-
-                        <div>
-                            📍
+                            <input
+                                type="text"
+                                id="contactName"
+                                placeholder="Enter your full name"
+                                required
+                            >
                         </div>
 
-                        <h3>
-                            School Address
-                        </h3>
 
-                        <p>
-                            Victor School
-                            <br>
-                            School Campus
-                        </p>
+                        <div class="form-group">
+                            <label for="contactEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="contactEmail"
+                                placeholder="Enter your email address"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="contactSubject">
+                                Subject
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contactSubject"
+                                placeholder="Enter subject"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="contactMessage">
+                                Message
+                            </label>
+
+                            <textarea
+                                id="contactMessage"
+                                placeholder="Write your message here..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <button type="submit" class="send-message-btn">
+                            <span>➤</span>
+                            Send
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- CONTACT INFORMATION -->
+                <div class="contact-info-card">
+
+                    <h2>Get In Touch</h2>
+
+                    <p class="contact-intro">
+                        You can contact Victor School through any of the
+                        channels below. Our team will be happy to assist you.
+                    </p>
+
+
+                    <!-- PHONE -->
+                    <div class="contact-info-item">
+
+                        <div class="contact-icon">
+                            ☎
+                        </div>
+
+                        <div>
+                            <strong>Phone</strong>
+                            <p>+234 903 055 4315</p>
+                        </div>
 
                     </div>
 
 
-                    <!-- PHONE -->
-                    <div class="contact-card">
+                    <!-- EMAIL -->
+                    <div class="contact-info-item">
 
-                        <div>
-                            📞
+                        <div class="contact-icon">
+                            ✉
                         </div>
 
-                        <h3>
-                            Phone
-                        </h3>
-
-                        <p>
-                            Contact the school office
-                            for assistance.
-                        </p>
+                        <div>
+                            <strong>Email</strong>
+                            <p>victorschool@gmail.com</p>
+                        </div>
 
                     </div>
 
 
                     <!-- OFFICE -->
-                    <div class="contact-card">
+                    <div class="contact-info-item">
 
-                        <div>
-                            ✉️
+                        <div class="contact-icon">
+                            📍
                         </div>
 
-                        <h3>
-                            School Office
-                        </h3>
-
-                        <p>
-                            Visit the school office
-                            for enquiries.
-                        </p>
+                        <div>
+                            <strong>Office</strong>
+                            <p>
+                                7, Tijani Street, Iyana-Ipaja,
+                                Lagos, Nigeria
+                            </p>
+                        </div>
 
                     </div>
 
 
+                    <div class="contact-divider"></div>
+
+
+                    <!-- SCHOOL HOURS -->
+                    <div class="contact-info-item school-hours">
+
+                        <div class="contact-icon">
+                            ◷
+                        </div>
+
+                        <div>
+                            <strong>School Hours</strong>
+                            <p>
+                                Monday - Friday: 8:00 AM - 4:00 PM
+                            </p>
+                        </div>
+
+                    </div>
+
                 </div>
 
+            </div>
 
-            </section>
-
-
-        </div>
-
+        </section>
 
     </main>
 
 
-    <div
-        class="loading-screen"
-        id="loadingScreen">
+    <!-- FIREBASE / PORTAL SCRIPT -->
+    <script type="module" src="portal.js"></script>
 
-        <div class="loader"></div>
+    <script>
 
-        <p>
-            Loading your student portal...
-        </p>
+        const contactForm = document.getElementById("contactForm");
 
-    </div>
+        contactForm.addEventListener("submit", function(event) {
 
+            event.preventDefault();
+
+            alert("Thank you for contacting Victor School. Your message has been received.");
+
+            contactForm.reset();
+
+        });
+
+    </script>
 
 </body>
-
 </html>
