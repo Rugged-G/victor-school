@@ -1,7 +1,21 @@
+// ======================================================
+// VICTOR SCHOOL - FIREBASE CONFIGURATION
+// ======================================================
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
+
+import {
+    getAuth
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+import {
+    getFirestore
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+// ======================================================
+// FIREBASE CONFIG
+// ======================================================
 
 const firebaseConfig = {
     apiKey: "AIzaSyAzrNRSET9VrPq3g2yHafbgaA_xvzBeGWo",
@@ -13,14 +27,23 @@ const firebaseConfig = {
     measurementId: "G-4HE4JW99MF"
 };
 
-// Initialize Firebase
+
+// ======================================================
+// INITIALIZE FIREBASE
+// ======================================================
+
 const app = initializeApp(firebaseConfig);
 
-// Firebase Authentication
+
+// ======================================================
+// FIREBASE AUTHENTICATION
+// ======================================================
+
 export const auth = getAuth(app);
 
-// Cloud Firestore
-export const db = getFirestore(app);
 
-// Analytics
-export const analytics = getAnalytics(app);
+// ======================================================
+// CLOUD FIRESTORE
+// ======================================================
+
+export const db = getFirestore(app);

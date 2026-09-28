@@ -662,16 +662,62 @@
 
             /* LOGIN */
 
-            const userCredential =
-                await signInWithEmailAndPassword(
-                    auth,
-                    email,
-                    password
-                );
+try {
 
+    const userCredential =
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-            const user =
-                userCredential.user;
+    console.log(
+        "Login successful:",
+        userCredential.user.uid
+    );
+
+    sessionStorage.setItem(
+        "studentUID",
+        userCredential.user.uid
+    );
+
+    window.location.href =
+        "./dashboard.html";
+
+} catch (error) {
+
+    console.error(
+        "Login error:",
+        error
+    );
+
+    if (error.code === "auth/invalid-credential") {
+
+        alert(
+            "Invalid admission number or password."
+        );
+
+    } else if (error.code === "auth/user-not-found") {
+
+        alert(
+            "No student account was found."
+        );
+
+    } else if (error.code === "auth/wrong-password") {
+
+        alert(
+            "Incorrect password."
+        );
+
+    } else {
+
+        alert(
+            "Unable to login. Please try again."
+        );
+
+    }
+
+}
 
 
             /* GET STUDENT */

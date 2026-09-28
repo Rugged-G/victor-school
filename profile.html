@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Victor School</title>
 
-    <title>Contact School | Victor School</title>
-
-    <link
-        rel="stylesheet"
-        href="dashboard.css">
+    <link rel="stylesheet" href="dashboard.css">
 
     <script
         type="module"
         src="portal.js"
         defer>
     </script>
-
 </head>
-
 
 <body>
 
-
+    <!-- SIDEBAR OVERLAY -->
     <div
         class="sidebar-overlay"
         id="sidebarOverlay">
@@ -38,7 +29,6 @@
         class="sidebar"
         id="sidebar">
 
-
         <div class="school-brand">
 
             <img
@@ -46,22 +36,14 @@
                 alt="Victor School Logo">
 
             <div>
-
-                <h2>
-                    VICTOR SCHOOL
-                </h2>
-
-                <span>
-                    Student Portal
-                </span>
-
+                <h2>VICTOR SCHOOL</h2>
+                <span>Student Portal</span>
             </div>
 
         </div>
 
 
         <nav class="sidebar-nav">
-
 
             <a
                 href="dashboard.html"
@@ -75,7 +57,7 @@
 
             <a
                 href="profile.html"
-                class="nav-link">
+                class="nav-link active">
 
                 <span>👤</span>
                 <span>My Profile</span>
@@ -125,13 +107,12 @@
 
             <a
                 href="contact.html"
-                class="nav-link active">
+                class="nav-link">
 
                 <span>📞</span>
                 <span>Contact School</span>
 
             </a>
-
 
         </nav>
 
@@ -149,16 +130,13 @@
 
         </div>
 
-
     </aside>
 
 
-    <!-- MAIN -->
+    <!-- MAIN CONTENT -->
     <main class="main-content">
 
-
         <header class="topbar">
-
 
             <button
                 class="menu-btn"
@@ -171,19 +149,14 @@
 
             <div class="topbar-title">
 
-                <h3>
-                    Contact
-                </h3>
+                <h3>My Profile</h3>
 
-                <p>
-                    Victor School
-                </p>
+                <p>Victor School</p>
 
             </div>
 
 
             <div class="student-mini-profile">
-
 
                 <div
                     class="student-avatar"
@@ -206,110 +179,125 @@
 
                 </div>
 
-
             </div>
-
 
         </header>
 
 
+        <!-- PAGE -->
         <div class="dashboard-container">
 
-
             <section>
-
 
                 <div class="section-header">
 
                     <p class="small-heading">
-                        GET IN TOUCH
+                        STUDENT INFORMATION
                     </p>
 
                     <h1>
-                        Contact School
+                        My Profile
                     </h1>
 
                     <p>
-                        Need help? Contact the school
-                        administration.
+                        View the information connected
+                        to your student account.
                     </p>
 
                 </div>
 
 
-                <div class="contact-grid">
+                <!-- PROFILE HEADER -->
+                <div class="profile-box">
 
+                    <div
+                        class="large-avatar"
+                        id="profileAvatar">
 
-                    <!-- ADDRESS -->
-                    <div class="contact-card">
-
-                        <div>
-                            📍
-                        </div>
-
-                        <h3>
-                            School Address
-                        </h3>
-
-                        <p>
-                            Victor School
-                            <br>
-                            School Campus
-                        </p>
+                        V
 
                     </div>
 
 
-                    <!-- PHONE -->
-                    <div class="contact-card">
+                    <div class="profile-name">
 
-                        <div>
-                            📞
-                        </div>
+                        <h2 id="profileName">
+                            Loading...
+                        </h2>
 
-                        <h3>
-                            Phone
-                        </h3>
-
-                        <p>
-                            Contact the school office
-                            for assistance.
+                        <p id="profileAdmission">
+                            Admission Number
                         </p>
 
                     </div>
-
-
-                    <!-- OFFICE -->
-                    <div class="contact-card">
-
-                        <div>
-                            ✉️
-                        </div>
-
-                        <h3>
-                            School Office
-                        </h3>
-
-                        <p>
-                            Visit the school office
-                            for enquiries.
-                        </p>
-
-                    </div>
-
 
                 </div>
 
 
+                <!-- PROFILE DETAILS -->
+                <div class="details-grid">
+
+                    <div class="detail-item">
+
+                        <span>
+                            Full Name
+                        </span>
+
+                        <strong id="profileFullname">
+                            Loading...
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Admission Number
+                        </span>
+
+                        <strong id="profileAdmissionNumber">
+                            Loading...
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Class
+                        </span>
+
+                        <strong id="profileClass">
+                            Loading...
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Account Status
+                        </span>
+
+                        <strong class="status-active">
+                            Active
+                        </strong>
+
+                    </div>
+
+                </div>
+
             </section>
 
-
         </div>
-
 
     </main>
 
 
+    <!-- LOADING SCREEN -->
     <div
         class="loading-screen"
         id="loadingScreen">
@@ -322,7 +310,5 @@
 
     </div>
 
-
 </body>
-
 </html>

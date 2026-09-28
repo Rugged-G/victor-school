@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Timetable | Victor School</title>
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css">
+
+    <script
+        type="module"
+        src="portal.js"
+        defer>
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay">
+    </div>
+
+
+    <!-- SIDEBAR -->
+    <aside
+        class="sidebar"
+        id="sidebar">
+
+
+        <div class="school-brand">
+
+            <img
+                src="school1.jpg"
+                alt="Victor School Logo">
+
+            <div>
+
+                <h2>
+                    VICTOR SCHOOL
+                </h2>
+
+                <span>
+                    Student Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+
+            <a
+                href="dashboard.html"
+                class="nav-link">
+
+                <span>🏠</span>
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="nav-link">
+
+                <span>👤</span>
+                <span>My Profile</span>
+
+            </a>
+
+
+            <a
+                href="academics.html"
+                class="nav-link">
+
+                <span>📚</span>
+                <span>Academics</span>
+
+            </a>
+
+
+            <a
+                href="results.html"
+                class="nav-link">
+
+                <span>📊</span>
+                <span>Results</span>
+
+            </a>
+
+
+            <a
+                href="timetable.html"
+                class="nav-link active">
+
+                <span>📅</span>
+                <span>Timetable</span>
+
+            </a>
+
+
+            <a
+                href="announcements.html"
+                class="nav-link">
+
+                <span>📢</span>
+                <span>Announcements</span>
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="nav-link">
+
+                <span>📞</span>
+                <span>Contact School</span>
+
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                id="logoutBtn"
+                class="logout-btn">
+
+                <span>🚪</span>
+                Logout
+
+            </button>
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn">
+
+                ☰
+
+            </button>
+
+
+            <div class="topbar-title">
+
+                <h3>
+                    Timetable
+                </h3>
+
+                <p>
+                    Victor School
+                </p>
+
+            </div>
+
+
+            <div class="student-mini-profile">
+
+
+                <div
+                    class="student-avatar"
+                    id="studentAvatar">
+
+                    V
+
+                </div>
+
+
+                <div class="mini-info">
+
+                    <strong id="topStudentName">
+                        Loading...
+                    </strong>
+
+                    <span id="topStudentClass">
+                        Student
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+        <div class="dashboard-container">
+
+
+            <section>
+
+
+                <div class="section-header">
+
+                    <p class="small-heading">
+                        CLASS SCHEDULE
+                    </p>
+
+                    <h1>
+                        My Timetable
+                    </h1>
+
+                    <p>
+                        Your weekly class timetable.
+                    </p>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Day
+                                </th>
+
+                                <th>
+                                    8:00 - 9:00
+                                </th>
+
+                                <th>
+                                    9:00 - 10:00
+                                </th>
+
+                                <th>
+                                    10:00 - 11:00
+                                </th>
+
+                                <th>
+                                    11:30 - 12:30
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <tr>
+
+                                <td>
+                                    Monday
+                                </td>
+
+                                <td>
+                                    Mathematics
+                                </td>
+
+                                <td>
+                                    English
+                                </td>
+
+                                <td>
+                                    Basic Science
+                                </td>
+
+                                <td>
+                                    Computer
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Tuesday
+                                </td>
+
+                                <td>
+                                    English
+                                </td>
+
+                                <td>
+                                    Mathematics
+                                </td>
+
+                                <td>
+                                    Civic Education
+                                </td>
+
+                                <td>
+                                    Social Studies
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Wednesday
+                                </td>
+
+                                <td>
+                                    Basic Science
+                                </td>
+
+                                <td>
+                                    Computer
+                                </td>
+
+                                <td>
+                                    Mathematics
+                                </td>
+
+                                <td>
+                                    English
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Thursday
+                                </td>
+
+                                <td>
+                                    Social Studies
+                                </td>
+
+                                <td>
+                                    Civic Education
+                                </td>
+
+                                <td>
+                                    English
+                                </td>
+
+                                <td>
+                                    Mathematics
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Friday
+                                </td>
+
+                                <td>
+                                    Computer
+                                </td>
+
+                                <td>
+                                    Basic Science
+                                </td>
+
+                                <td>
+                                    English
+                                </td>
+
+                                <td>
+                                    Revision
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+    <div
+        class="loading-screen"
+        id="loadingScreen">
+
+        <div class="loader"></div>
+
+        <p>
+            Loading your student portal...
+        </p>
+
+    </div>
+
+
+</body>
+
+</html>

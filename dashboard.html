@@ -1,250 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Student Dashboard - Victor School</title>
+    <title>Student Dashboard | Victor School</title>
 
     <link rel="stylesheet" href="dashboard.css">
 
+    <!-- Firebase -->
+    <script type="module" src="portal.js" defer></script>
 </head>
-
 
 <body>
 
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- =========================
-         MOBILE OVERLAY
-    ========================== -->
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
 
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-    ></div>
-
-
-
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
-
-    <aside
-        class="sidebar"
-        id="sidebar"
-    >
-
-        <div class="sidebar-logo">
-
-            <img
-                src="school1.jpg"
-                alt="Victor School"
-            >
+        <div class="school-brand">
+            <img src="school1.jpg" alt="Victor School Logo">
 
             <div>
-
-                <strong>VICTOR SCHOOL</strong>
-
+                <h2>VICTOR SCHOOL</h2>
                 <span>Student Portal</span>
-
             </div>
-
         </div>
 
+        <nav class="sidebar-nav">
 
-
-        <div class="sidebar-menu">
-
-            <p class="menu-title">
-                MAIN MENU
-            </p>
-
-
-            <a
-                href="dashboard.html"
-                class="menu-link active"
-            >
-
-                <span class="menu-icon">
-                    🏠
-                </span>
-
-                <span>
-                    Dashboard
-                </span>
-
+            <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                <span>🏠</span>
+                <span>Dashboard</span>
             </a>
 
-
-            <a
-                href="#"
-                class="menu-link"
-            >
-
-                <span class="menu-icon">
-                    👤
-                </span>
-
-                <span>
-                    My Profile
-                </span>
-
+            <a href="profile.html" class="nav-link" data-section="profile">
+                <span>👤</span>
+                <span>My Profile</span>
             </a>
 
-
-            <a
-                href="#"
-                class="menu-link"
-            >
-
-                <span class="menu-icon">
-                    📚
-                </span>
-
-                <span>
-                    Academic Records
-                </span>
-
+            <a href="academics.html" class="nav-link" data-section="academics">
+                <span>📚</span>
+                <span>Academics</span>
             </a>
 
-
-            <a
-                href="#"
-                class="menu-link"
-            >
-
-                <span class="menu-icon">
-                    📝
-                </span>
-
-                <span>
-                    Results
-                </span>
-
+            <a href="results.html" class="nav-link" data-section="results">
+                <span>📊</span>
+                <span>Results</span>
             </a>
 
-
-            <p class="menu-title portal-title">
-                SCHOOL
-            </p>
-
-
-            <a
-                href="#"
-                class="menu-link"
-            >
-
-                <span class="menu-icon">
-                    📢
-                </span>
-
-                <span>
-                    Announcements
-                </span>
-
+            <a href="timetable.html" class="nav-link" data-section="timetable">
+                <span>📅</span>
+                <span>Timetable</span>
             </a>
 
-
-            <a
-                href="contact.html"
-                class="menu-link"
-            >
-
-                <span class="menu-icon">
-                    💬
-                </span>
-
-                <span>
-                    Contact School
-                </span>
-
+            <a href="announcements.html" class="nav-link" data-section="announcements">
+                <span>📢</span>
+                <span>Announcements</span>
             </a>
 
-        </div>
+            <a href="contact.html" class="nav-link" data-section="contact">
+                <span>📞</span>
+                <span>Contact School</span>
+            </a>
 
-
-
-        <!-- SIDEBAR BOTTOM -->
+        </nav>
 
         <div class="sidebar-bottom">
-
-            <button
-                id="logoutBtn"
-                class="logout-link"
-            >
-
-                <span class="menu-icon">
-                    🚪
-                </span>
-
-                <span>
-                    Logout
-                </span>
-
+            <button id="logoutBtn" class="logout-btn">
+                <span>🚪</span>
+                Logout
             </button>
-
         </div>
 
     </aside>
 
 
-
-    <!-- =========================
-         MAIN
-    ========================== -->
-
+    <!-- MAIN AREA -->
     <main class="main-content">
 
-
         <!-- TOP BAR -->
-
         <header class="topbar">
 
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-            >
+            <button class="menu-btn" id="menuBtn">
                 ☰
             </button>
 
-
             <div class="topbar-title">
-
-                <span>
-                    STUDENT PORTAL
-                </span>
-
-                <h2>
-                    Dashboard
-                </h2>
-
+                <h3>Student Dashboard</h3>
+                <p>Victor School</p>
             </div>
 
+            <div class="student-mini-profile">
 
-            <div class="student-mini">
-
-                <div class="student-avatar">
-                    <span id="avatarLetter">
-                        S
-                    </span>
+                <div class="student-avatar" id="studentAvatar">
+                    V
                 </div>
 
-                <div class="student-mini-info">
-
-                    <strong id="topStudentName">
-                        Student
-                    </strong>
-
-                    <span>
-                        Student
-                    </span>
-
+                <div class="mini-info">
+                    <strong id="topStudentName">Loading...</strong>
+                    <span id="topStudentClass">Student</span>
                 </div>
 
             </div>
@@ -252,637 +109,540 @@
         </header>
 
 
-
-        <!-- =========================
-             DASHBOARD CONTENT
-        ========================== -->
-
-        <section class="dashboard-content">
+        <!-- CONTENT -->
+        <div class="dashboard-container">
 
 
-            <!-- WELCOME -->
+            <!-- ================= DASHBOARD ================= -->
 
-            <div class="welcome-card">
+            <section class="page-section active-section" id="dashboard">
 
-                <div>
-
-                    <span class="welcome-label">
-                        WELCOME BACK
-                    </span>
-
-                    <h1 id="welcome">
-                        Welcome, Student
-                    </h1>
-
-                    <p>
-                        Manage your student information,
-                        academic records and school updates
-                        from your portal.
-                    </p>
-
-                </div>
-
-
-                <div class="welcome-decoration">
-                    🎓
-                </div>
-
-            </div>
-
-
-
-            <!-- =========================
-                 STUDENT OVERVIEW
-            ========================== -->
-
-            <div class="section-heading">
-
-                <div>
-
-                    <span>
-                        OVERVIEW
-                    </span>
-
-                    <h2>
-                        Student Information
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div class="info-grid">
-
-
-                <div class="info-card">
-
-                    <div class="info-icon">
-                        👤
-                    </div>
+                <div class="welcome-area">
 
                     <div>
+                        <p class="small-heading">STUDENT PORTAL</p>
 
-                        <span>
-                            Full Name
-                        </span>
+                        <h1>
+                            Welcome back,
+                            <span id="welcomeName">Student</span> 👋
+                        </h1>
 
-                        <strong id="studentName">
-                            Loading...
-                        </strong>
+                        <p>
+                            Here's a quick look at your school information.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMATION CARDS -->
+
+                <div class="info-cards">
+
+                    <div class="info-card">
+
+                        <div class="card-icon">
+                            🎓
+                        </div>
+
+                        <div>
+                            <span>Current Class</span>
+                            <h2 id="classCard">Loading...</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="card-icon">
+                            📚
+                        </div>
+
+                        <div>
+                            <span>Subjects</span>
+                            <h2>8+</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="card-icon">
+                            📝
+                        </div>
+
+                        <div>
+                            <span>Latest Result</span>
+                            <h2 id="resultCard">--</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="card-icon">
+                            📢
+                        </div>
+
+                        <div>
+                            <span>Announcements</span>
+                            <h2>3</h2>
+                        </div>
 
                     </div>
 
                 </div>
 
 
+                <!-- TWO COLUMN AREA -->
 
-                <div class="info-card">
+                <div class="dashboard-grid">
 
-                    <div class="info-icon">
-                        🎓
+                    <!-- ANNOUNCEMENTS -->
+
+                    <div class="dashboard-box">
+
+                        <div class="box-heading">
+                            <div>
+                                <h2>Recent Announcements</h2>
+                                <p>Latest information from the school</p>
+                            </div>
+
+                            <button class="text-btn" data-section-target="announcements">
+                                View all
+                            </button>
+                        </div>
+
+
+                        <div class="announcement-list">
+
+                            <div class="announcement">
+
+                                <div class="announcement-icon">
+                                    📢
+                                </div>
+
+                                <div>
+                                    <h3>Welcome to the Student Portal</h3>
+                                    <p>
+                                        Students can now access their academic
+                                        information from this portal.
+                                    </p>
+                                    <small>Victor School</small>
+                                </div>
+
+                            </div>
+
+
+                            <div class="announcement">
+
+                                <div class="announcement-icon">
+                                    📅
+                                </div>
+
+                                <div>
+                                    <h3>Check Your Timetable</h3>
+                                    <p>
+                                        Students are encouraged to check their
+                                        class timetable regularly.
+                                    </p>
+                                    <small>Academic Department</small>
+                                </div>
+
+                            </div>
+
+
+                            <div class="announcement">
+
+                                <div class="announcement-icon">
+                                    🏫
+                                </div>
+
+                                <div>
+                                    <h3>School Activities</h3>
+                                    <p>
+                                        More information about upcoming school
+                                        activities will be posted here.
+                                    </p>
+                                    <small>Victor School</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
-                    <div>
 
-                        <span>
-                            Admission Number
-                        </span>
+                    <!-- QUICK ACCESS -->
 
-                        <strong id="studentAdmission">
-                            Loading...
-                        </strong>
+                    <div class="dashboard-box">
+
+                        <div class="box-heading">
+
+                            <div>
+                                <h2>Quick Access</h2>
+                                <p>Useful student links</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-links">
+
+                            <button data-section-target="profile">
+                                <span>👤</span>
+                                <div>
+                                    <strong>My Profile</strong>
+                                    <small>View your information</small>
+                                </div>
+                            </button>
+
+
+                            <button data-section-target="academics">
+                                <span>📚</span>
+                                <div>
+                                    <strong>Academics</strong>
+                                    <small>View your subjects</small>
+                                </div>
+                            </button>
+
+
+                            <button data-section-target="results">
+                                <span>📊</span>
+                                <div>
+                                    <strong>My Results</strong>
+                                    <small>Check academic results</small>
+                                </div>
+                            </button>
+
+
+                            <button data-section-target="timetable">
+                                <span>📅</span>
+                                <div>
+                                    <strong>Timetable</strong>
+                                    <small>View class timetable</small>
+                                </div>
+                            </button>
+
+                        </div>
 
                     </div>
 
                 </div>
 
+            </section>
 
 
-                <div class="info-card">
+            <!-- ================= PROFILE ================= -->
 
-                    <div class="info-icon">
-                        📚
+            <section class="page-section" id="profile">
+
+                <div class="section-header">
+                    <p class="small-heading">STUDENT INFORMATION</p>
+                    <h1>My Profile</h1>
+                    <p>View the information connected to your student account.</p>
+                </div>
+
+
+                <div class="profile-box">
+
+                    <div class="large-avatar" id="profileAvatar">
+                        V
                     </div>
 
-                    <div>
-
-                        <span>
-                            Class
-                        </span>
-
-                        <strong id="studentClass">
-                            Loading...
-                        </strong>
-
+                    <div class="profile-name">
+                        <h2 id="profileName">Loading...</h2>
+                        <p id="profileAdmission">Admission Number</p>
                     </div>
 
                 </div>
 
 
+                <div class="details-grid">
 
-                <div class="info-card">
-
-                    <div class="info-icon">
-                        ✓
+                    <div class="detail-item">
+                        <span>Full Name</span>
+                        <strong id="profileFullname">Loading...</strong>
                     </div>
 
-                    <div>
+                    <div class="detail-item">
+                        <span>Admission Number</span>
+                        <strong id="profileAdmissionNumber">Loading...</strong>
+                    </div>
 
-                        <span>
-                            Account Status
-                        </span>
+                    <div class="detail-item">
+                        <span>Class</span>
+                        <strong id="profileClass">Loading...</strong>
+                    </div>
 
-                        <strong class="status-active">
-                            Active
-                        </strong>
-
+                    <div class="detail-item">
+                        <span>Account Status</span>
+                        <strong class="status-active">Active</strong>
                     </div>
 
                 </div>
 
-            </div>
+            </section>
 
 
+            <!-- ================= ACADEMICS ================= -->
 
-            <!-- =========================
-                 QUICK ACCESS
-            ========================== -->
+            <section class="page-section" id="academics">
 
-            <div class="section-heading quick-heading">
+                <div class="section-header">
+                    <p class="small-heading">ACADEMICS</p>
+                    <h1>My Academics</h1>
+                    <p>Your current subjects and academic information.</p>
+                </div>
 
-                <div>
 
-                    <span>
-                        QUICK ACCESS
-                    </span>
+                <div class="subjects-grid">
 
-                    <h2>
-                        School Services
-                    </h2>
+                    <div class="subject-card">
+                        <span>01</span>
+                        <h3>Mathematics</h3>
+                        <p>Mathematics</p>
+                    </div>
+
+                    <div class="subject-card">
+                        <span>02</span>
+                        <h3>English Language</h3>
+                        <p>Languages</p>
+                    </div>
+
+                    <div class="subject-card">
+                        <span>03</span>
+                        <h3>Basic Science</h3>
+                        <p>Science</p>
+                    </div>
+
+                    <div class="subject-card">
+                        <span>04</span>
+                        <h3>Civic Education</h3>
+                        <p>Social Studies</p>
+                    </div>
+
+                    <div class="subject-card">
+                        <span>05</span>
+                        <h3>Computer Studies</h3>
+                        <p>ICT</p>
+                    </div>
+
+                    <div class="subject-card">
+                        <span>06</span>
+                        <h3>Coding & Programming</h3>
+                        <p>ICT</p>
+                    </div>
+
+                    <div class="subject-card">
+                        <span>07</span>
+                        <h3>Social Studies</h3>
+                        <p>Social Studies</p>
+                    </div>
+
+                    <div class="subject-card">
+                        <span>08</span>
+                        <h3>Other Subjects</h3>
+                        <p>School Curriculum</p>
+                    </div>
 
                 </div>
 
-            </div>
+            </section>
 
 
+            <!-- ================= RESULTS ================= -->
 
-            <div class="services-grid">
+            <section class="page-section" id="results">
+
+                <div class="section-header">
+                    <p class="small-heading">ACADEMIC RECORDS</p>
+                    <h1>My Results</h1>
+                    <p>Your academic results will appear here.</p>
+                </div>
 
 
-                <a
-                    href="#"
-                    class="service-card"
-                >
+                <div class="empty-state">
 
-                    <div class="service-icon">
-                        👤
-                    </div>
+                    <div>📊</div>
 
-                    <h3>
-                        My Profile
-                    </h3>
+                    <h2>No Result Available Yet</h2>
 
                     <p>
-                        View and manage your
-                        student information.
-                    </p>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="#"
-                    class="service-card"
-                >
-
-                    <div class="service-icon">
-                        📚
-                    </div>
-
-                    <h3>
-                        Academic Records
-                    </h3>
-
-                    <p>
-                        Access your academic
-                        information and records.
-                    </p>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="#"
-                    class="service-card"
-                >
-
-                    <div class="service-icon">
-                        📝
-                    </div>
-
-                    <h3>
-                        Results
-                    </h3>
-
-                    <p>
-                        View your examination
-                        and academic results.
-                    </p>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="#"
-                    class="service-card"
-                >
-
-                    <div class="service-icon">
-                        📢
-                    </div>
-
-                    <h3>
-                        Announcements
-                    </h3>
-
-                    <p>
-                        Stay updated with the
-                        latest school information.
-                    </p>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="contact.html"
-                    class="service-card"
-                >
-
-                    <div class="service-icon">
-                        💬
-                    </div>
-
-                    <h3>
-                        Contact School
-                    </h3>
-
-                    <p>
-                        Contact the school for
-                        questions or assistance.
-                    </p>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- =========================
-                 PORTAL NOTICE
-            ========================== -->
-
-            <div class="notice-card">
-
-                <div class="notice-icon">
-                    📢
-                </div>
-
-                <div>
-
-                    <span>
-                        IMPORTANT
-                    </span>
-
-                    <h3>
-                        Welcome to the Student Portal
-                    </h3>
-
-                    <p>
-                        More student services and
-                        academic features will be
-                        available here as the portal
-                        continues to develop.
+                        Your latest examination result will appear here
+                        when it has been published by the school.
                     </p>
 
                 </div>
 
-            </div>
+            </section>
 
 
-        </section>
+            <!-- ================= TIMETABLE ================= -->
+
+            <section class="page-section" id="timetable">
+
+                <div class="section-header">
+                    <p class="small-heading">CLASS SCHEDULE</p>
+                    <h1>My Timetable</h1>
+                    <p>Your weekly class timetable.</p>
+                </div>
 
 
+                <div class="table-wrapper">
 
-        <!-- FOOTER -->
+                    <table>
 
-        <footer>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>8:00 - 9:00</th>
+                                <th>9:00 - 10:00</th>
+                                <th>10:00 - 11:00</th>
+                                <th>11:30 - 12:30</th>
+                            </tr>
+                        </thead>
 
-            <span>
-                © 2026 Victor School
-            </span>
+                        <tbody>
 
-            <span>
-                Student Portal
-            </span>
+                            <tr>
+                                <td>Monday</td>
+                                <td>Mathematics</td>
+                                <td>English</td>
+                                <td>Basic Science</td>
+                                <td>Computer</td>
+                            </tr>
 
-        </footer>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>English</td>
+                                <td>Mathematics</td>
+                                <td>Civic Education</td>
+                                <td>Social Studies</td>
+                            </tr>
+
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>Basic Science</td>
+                                <td>Computer</td>
+                                <td>Mathematics</td>
+                                <td>English</td>
+                            </tr>
+
+                            <tr>
+                                <td>Thursday</td>
+                                <td>Social Studies</td>
+                                <td>Civic Education</td>
+                                <td>English</td>
+                                <td>Mathematics</td>
+                            </tr>
+
+                            <tr>
+                                <td>Friday</td>
+                                <td>Computer</td>
+                                <td>Basic Science</td>
+                                <td>English</td>
+                                <td>Revision</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
 
 
+            <!-- ================= ANNOUNCEMENTS ================= -->
+
+            <section class="page-section" id="announcements">
+
+                <div class="section-header">
+                    <p class="small-heading">SCHOOL INFORMATION</p>
+                    <h1>Announcements</h1>
+                    <p>Important information from Victor School.</p>
+                </div>
+
+
+                <div class="full-announcements">
+
+                    <div class="full-announcement">
+                        <span>📢</span>
+                        <div>
+                            <h2>Welcome to the Student Portal</h2>
+                            <p>
+                                Students can use this portal to access their
+                                academic information and school updates.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="full-announcement">
+                        <span>📅</span>
+                        <div>
+                            <h2>Examination Timetable</h2>
+                            <p>
+                                Students should check the timetable section
+                                for their current class schedule.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="full-announcement">
+                        <span>🏫</span>
+                        <div>
+                            <h2>School Activities</h2>
+                            <p>
+                                Information about school activities and
+                                upcoming events will be posted here.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ================= CONTACT ================= -->
+            <section class="page-section" id="contact">
+                <div class="section-header">
+                    <p class="small-heading">GET IN TOUCH</p>
+                    <h1>Contact School</h1>
+                    <p>Need help? Contact the school administration.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div>📍</div>
+                        <h3>School Address</h3>
+                        <p>
+                            Victor School<br>
+                            School Campus
+                        </p>
+                    </div>
+                    <div class="contact-card">
+                        <div>📞</div>
+                        <h3>Phone</h3>
+                        <p>
+                            Contact the school office
+                            for assistance.
+                        </p>
+                    </div>
+                    <div class="contact-card">
+                        <div>✉️</div>
+                        <h3>School Office</h3>
+                        <p>
+                            Visit the school office
+                            for enquiries.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-
-
-
-    <!-- =========================
-         FIREBASE
-    ========================== -->
-
-    <script type="module">
-
-        import {
-            auth,
-            db
-        } from "./firebase.js";
-
-
-        import {
-            onAuthStateChanged,
-            signOut
-        } from
-        "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-
-
-        import {
-            doc,
-            getDoc
-        } from
-        "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-
-
-
-        /* =========================
-           SIDEBAR
-        ========================== */
-
-        const sidebar =
-            document.getElementById("sidebar");
-
-        const overlay =
-            document.getElementById("sidebarOverlay");
-
-        const menuToggle =
-            document.getElementById("menuToggle");
-
-
-        menuToggle.addEventListener(
-            "click",
-            () => {
-
-                sidebar.classList.toggle("open");
-
-                overlay.classList.toggle("show");
-
-            }
-        );
-
-
-        overlay.addEventListener(
-            "click",
-            () => {
-
-                sidebar.classList.remove("open");
-
-                overlay.classList.remove("show");
-
-            }
-        );
-
-
-
-        /* =========================
-           FIREBASE AUTH
-        ========================== */
-
-        onAuthStateChanged(
-            auth,
-            async (user) => {
-
-                if (!user) {
-
-                    window.location.href =
-                        "./index.html";
-
-                    return;
-
-                }
-
-
-                try {
-
-                    const studentRef =
-                        doc(
-                            db,
-                            "students",
-                            user.uid
-                        );
-
-
-                    const studentSnap =
-                        await getDoc(studentRef);
-
-
-                    if (
-                        !studentSnap.exists()
-                    ) {
-
-                        alert(
-                            "Student record not found."
-                        );
-
-
-                        await signOut(auth);
-
-
-                        window.location.href =
-                            "./index.html";
-
-
-                        return;
-
-                    }
-
-
-                    const student =
-                        studentSnap.data();
-
-
-
-                    /* STUDENT NAME */
-
-                    document
-                        .getElementById(
-                            "welcome"
-                        )
-                        .textContent =
-                        "Welcome, " +
-                        student.fullname;
-
-
-                    document
-                        .getElementById(
-                            "studentName"
-                        )
-                        .textContent =
-                        student.fullname;
-
-
-                    document
-                        .getElementById(
-                            "topStudentName"
-                        )
-                        .textContent =
-                        student.fullname;
-
-
-                    document
-                        .getElementById(
-                            "studentAdmission"
-                        )
-                        .textContent =
-                        student.admissionNumber;
-
-
-                    document
-                        .getElementById(
-                            "studentClass"
-                        )
-                        .textContent =
-                        student.studentClass;
-
-
-
-                    /* AVATAR LETTER */
-
-                    document
-                        .getElementById(
-                            "avatarLetter"
-                        )
-                        .textContent =
-                        student.fullname
-                            .charAt(0)
-                            .toUpperCase();
-
-                }
-
-
-                catch (error) {
-
-                    console.error(
-                        "Dashboard error:",
-                        error
-                    );
-
-
-                    alert(
-                        "There was a problem loading your dashboard."
-                    );
-
-                }
-
-            }
-        );
-
-
-
-        /* =========================
-           LOGOUT
-        ========================== */
-
-        document
-            .getElementById("logoutBtn")
-            .addEventListener(
-                "click",
-                async () => {
-
-                    try {
-
-                        await signOut(auth);
-
-                        sessionStorage.removeItem(
-                            "studentUID"
-                        );
-
-
-                        window.location.href =
-                            "./index.html";
-
-                    }
-
-                    catch (error) {
-
-                        console.error(
-                            "Logout error:",
-                            error
-                        );
-
-                    }
-
-                }
-            );
-
-
-
-        /* =========================
-           CLOSE SIDEBAR AFTER LINK
-        ========================== */
-
-        document
-            .querySelectorAll(".menu-link")
-            .forEach(link => {
-
-                link.addEventListener(
-                    "click",
-                    () => {
-
-                        sidebar.classList.remove(
-                            "open"
-                        );
-
-                        overlay.classList.remove(
-                            "show"
-                        );
-
-                    }
-                );
-
-            });
-
-    </script>
-
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <p>Loading your student portal...</p>
+    </div>
 </body>
-
 </html>
