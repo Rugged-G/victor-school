@@ -3,269 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Contact School | Victor School</title>
-
     <link rel="stylesheet" href="dashboard.css">
 </head>
-
 <body>
-
     <!-- MOBILE OVERLAY -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
-
         <!-- SCHOOL BRAND -->
         <div class="school-brand">
-
             <div class="school-logo">
                 <img src="school1.jpg" alt="Victor School Logo">
             </div>
-
             <div class="school-brand-text">
                 <h2>VICTOR SCHOOL</h2>
                 <span>Student Portal</span>
             </div>
-
         </div>
-
-
         <!-- NAVIGATION -->
         <nav class="sidebar-nav">
-
             <a href="dashboard.html" class="nav-link">
                 <span class="nav-icon">🏠</span>
                 <span>Dashboard</span>
             </a>
-
             <a href="profile.html" class="nav-link">
                 <span class="nav-icon">👤</span>
                 <span>My Profile</span>
             </a>
-
             <a href="academics.html" class="nav-link">
                 <span class="nav-icon">📚</span>
                 <span>Academics</span>
             </a>
-
             <a href="results.html" class="nav-link">
                 <span class="nav-icon">📊</span>
                 <span>Results</span>
             </a>
-
             <a href="timetable.html" class="nav-link">
                 <span class="nav-icon">📅</span>
                 <span>Timetable</span>
             </a>
-
             <a href="announcements.html" class="nav-link">
                 <span class="nav-icon">📢</span>
                 <span>Announcements</span>
             </a>
-
             <a href="contact.html" class="nav-link active">
                 <span class="nav-icon">📞</span>
                 <span>Contact School</span>
             </a>
-
         </nav>
-
-
         <!-- LOGOUT -->
         <div class="sidebar-bottom">
-
             <button id="logoutBtn" class="logout-btn">
                 <span class="nav-icon">🚪</span>
                 <span>Logout</span>
             </button>
-
         </div>
-
     </aside>
-
-
     <!-- MAIN AREA -->
     <main class="main-content">
-
         <!-- TOP BAR -->
         <header class="topbar">
-
             <button class="menu-btn" id="menuBtn">
                 ☰
             </button>
-
             <div class="topbar-title">
                 <h3>Contact School</h3>
                 <p>We're here to help you</p>
             </div>
-
             <div class="student-mini-profile">
-
-                <div class="student-avatar" id="studentAvatar">
-                    S
-                </div>
-
+                <div class="student-avatar" id="studentAvatar">S</div>
                 <div class="mini-info">
                     <strong id="topStudentName">Student</strong>
                     <span id="topStudentClass">Student</span>
                 </div>
-
             </div>
-
         </header>
-
-
         <!-- CONTACT CONTENT -->
         <section class="contact-page">
-
             <div class="contact-heading">
-
                 <h1>Contact Us</h1>
-
                 <p>
                     Have questions or need more information about Victor School?
                     We would love to hear from you.
                 </p>
-
             </div>
-
-
             <div class="contact-layout">
-
                 <!-- MESSAGE FORM -->
                 <div class="contact-form-card">
-
                     <h2>Send us a message</h2>
-
                     <form id="contactForm">
-
                         <div class="form-group">
-
-                            <label for="contactName">
-                                Full Name
-                            </label>
-
-                            <input
-                                type="text"
-                                id="contactName"
-                                placeholder="Enter your full name"
-                                required
-                            >
-
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" placeholder="Enter your full name" required>
                         </div>
-
-
                         <div class="form-group">
-
-                            <label for="contactEmail">
-                                Email Address
-                            </label>
-
-                            <input
-                                type="email"
-                                id="contactEmail"
-                                placeholder="Enter your email address"
-                                required
-                            >
-
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" placeholder="Enter your email address" required>
                         </div>
-
-
                         <div class="form-group">
-
-                            <label for="contactSubject">
-                                Subject
-                            </label>
-
-                            <input
-                                type="text"
-                                id="contactSubject"
-                                placeholder="Enter subject"
-                                required
-                            >
-
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" placeholder="Enter subject" required>
                         </div>
-
-
                         <div class="form-group">
-
-                            <label for="contactMessage">
-                                Message
-                            </label>
-
-                            <textarea
-                                id="contactMessage"
-                                placeholder="Write your message here..."
-                                required
-                            ></textarea>
-
+                            <label for="contactMessage"> Message</label>
+                            <textarea id="contactMessage" placeholder="Write your message here..." required></textarea>
                         </div>
-
-
-                        <button
-                            type="submit"
-                            class="send-message-btn"
-                        >
-                            <span>➤</span>
-                            Send Message
-                        </button>
-
+                        <button type="submit" class="send-message-btn">
+                            <span>➤</span>Send Message</button>
                     </form>
-
                 </div>
-
-
                 <!-- CONTACT INFORMATION -->
                 <div class="contact-info-card">
-
                     <h2>Get In Touch</h2>
-
                     <p class="contact-intro">
                         You can contact Victor School through any of the
                         channels below. Our team will be happy to assist you.
                     </p>
-
-
                     <!-- PHONE -->
                     <div class="contact-info-item">
-
-                        <div class="contact-icon">
-                            📞
-                        </div>
-
+                        <div class="contact-icon">📞</div>
                         <div>
                             <strong>Phone</strong>
                             <p>+234 903 055 4315</p>
                         </div>
-
                     </div>
-
-
                     <!-- EMAIL -->
                     <div class="contact-info-item">
-
-                        <div class="contact-icon">
-                            ✉️
-                        </div>
-
+                        <div class="contact-icon">✉️</div>
                         <div>
                             <strong>Email</strong>
                             <p>victorschool@gmail.com</p>
                         </div>
-
                     </div>
-
-
                     <!-- OFFICE -->
                     <div class="contact-info-item">
-
-                        <div class="contact-icon">
-                            📍
-                        </div>
-
+                        <div class="contact-icon">📍</div>
                         <div>
                             <strong>Office</strong>
                             <p>
@@ -273,66 +146,39 @@
                                 Lagos, Nigeria
                             </p>
                         </div>
-
                     </div>
-
-
                     <div class="contact-divider"></div>
-
-
                     <!-- SCHOOL HOURS -->
                     <div class="contact-info-item school-hours">
-
-                        <div class="contact-icon">
-                            🕐
-                        </div>
-
+                        <div class="contact-icon">🕐</div>
                         <div>
                             <strong>School Hours</strong>
-
                             <p>
                                 Monday - Friday:
                                 8:00 AM - 4:00 PM
                             </p>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
     </main>
-
-
     <!-- PORTAL SCRIPT -->
     <script type="module" src="portal.js"></script>
-
-
     <!-- CONTACT FORM -->
     <script>
-
         const contactForm =
             document.getElementById("contactForm");
-
         contactForm.addEventListener(
             "submit",
             function(event) {
-
                 event.preventDefault();
-
                 alert(
                     "Thank you for contacting Victor School. Your message has been received."
                 );
-
                 contactForm.reset();
-
             }
         );
-
     </script>
-
 </body>
 </html>
