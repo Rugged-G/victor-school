@@ -466,316 +466,123 @@
 
     import {
         doc,
-        setDoc,
-        getDoc
+        setDoc
     } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-    /* =========================
-       REGISTER
-    ========================= */
+    // =========================
+    // REGISTER
+    // =========================
 
-    const registerForm =
-        document.getElementById("registerForm");
+    const registerForm = document.getElementById("registerForm");
 
-
-    registerForm.addEventListener("submit", async function(e) {
-
+    registerForm.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        const fullname =
-            document.getElementById("fullname")
-            .value.trim();
+        const fullname = document.getElementById("fullname").value.trim();
+        const admission = document.getElementById("admissionNumbers").value.trim().toUpperCase();
+        const studentClass = document.getElementById("studentClass").value.trim();
+        const password = document.getElementById("regPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-        const admission =
-            document.getElementById("admissionNumbers")
-            .value.trim()
-            .toUpperCase();
-
-        const studentClass =
-            document.getElementById("studentClass")
-            .value.trim();
-
-        const password =
-            document.getElementById("regPassword")
-            .value;
-
-        const confirmPassword =
-            document.getElementById("confirmPassword")
-            .value;
-
-
-        if (
-            !fullname ||
-            !admission ||
-            !studentClass ||
-            !password
-        ) {
-
+        if (!fullname || !admission || !studentClass || !password) {
             alert("Please fill in all fields.");
             return;
-
         }
-
 
         if (password !== confirmPassword) {
-
             alert("Passwords do not match.");
             return;
-
         }
 
-
-        const email =
-            admission.toLowerCase() +
-            "@students.victorschool.local";
-
+        const email = admission.toLowerCase() + "@students.victorschool.local";
 
         try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
-            const userCredential =
-                await createUserWithEmailAndPassword(
-                    auth,
-                    email,
-                    password
-                );
+            await setDoc(doc(db, "students", user.uid), {
+                fullname,
+                admissionNumber: admission,
+                studentClass
+            });
 
-
-            const user =
-                userCredential.user;
-
-
-            await setDoc(
-                doc(db, "students", user.uid),
-                {
-                    fullname: fullname,
-                    admissionNumber: admission,
-                    studentClass: studentClass
-                }
-            );
-
-
+            // Registration signs the student in automatically.
+            // Sign out so they deliberately log in through the portal.
             await signOut(auth);
 
-
-            alert(
-                "Registration successful! You can now login."
-            );
-
+            alert("Registration successful! You can now login.");
 
             registerForm.reset();
-
-
-            document
-                .getElementById("registerFormContainer")
-                .classList.remove("show");
-
-
-            document
-                .getElementById("loginFormContainer")
-                .classList.add("show");
-
-
-            document
-                .getElementById("admissionNumber")
-                .value = admission;
-
+            document.getElementById("registerFormContainer").classList.remove("show");
+            document.getElementById("loginFormContainer").classList.add("show");
+            document.getElementById("admissionNumber").value = admission;
 
         } catch (error) {
+            console.error("Registration Error:", error);
 
-            console.error(
-                "Registration Error:",
-                error
-            );
-
-
-            if (
-                error.code ===
-                "auth/email-already-in-use"
-            ) {
-
-                alert(
-                    "This admission number is already registered."
-                );
-
-            } else if (
-                error.code ===
-                "auth/weak-password"
-            ) {
-
-                alert(
-                    "Password is too weak. Use at least 6 characters."
-                );
-
+            if (error.code === "auth/email-already-in-use") {
+                alert("This admission number is already registered.");
+            } else if (error.code === "auth/weak-password") {
+                alert("Password is too weak. Use at least 6 characters.");
             } else {
-
-                alert(
-                    "Registration failed. Please try again."
-                );
-
+                alert("Registration failed. Please try again.");
             }
-
         }
-
     });
 
 
-    /* =========================
-       LOGIN
-    ========================= */
+    // =========================
+    // LOGIN
+    // =========================
 
-    const loginForm =
-        document.getElementById("loginForm");
+    const loginForm = document.getElementById("loginForm");
 
-
-    loginForm.addEventListener("submit", async function(e) {
-
+    loginForm.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-
-        const admission =
-            document.getElementById("admissionNumber")
-            .value.trim()
-            .toUpperCase();
-
-        const password =
-            document.getElementById("password")
-            .value;
-
+        const admission = document.getElementById("admissionNumber").value.trim().toUpperCase();
+        const password = document.getElementById("password").value;
 
         if (!admission || !password) {
-
-            alert(
-                "Please enter your admission number and password."
-            );
-
+            alert("Please enter your admission number and password.");
             return;
         }
 
-
-        const email =
-            admission.toLowerCase() +
-            "@students.victorschool.local";
-
+        const email = admission.toLowerCase() + "@students.victorschool.local";
 
         try {
+            console.log("Attempting student login:", email);
 
-            /* LOGIN */
-
-try {
-
-    const userCredential =
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
-    console.log(
-        "Login successful:",
-        userCredential.user.uid
-    );
-
-    sessionStorage.setItem(
-        "studentUID",
-        userCredential.user.uid
-    );
-
-    window.location.href =
-        "./dashboard.html";
-
-} catch (error) {
-
-    console.error(
-        "Login error:",
-        error
-    );
-
-    if (error.code === "auth/invalid-credential") {
-
-        alert(
-            "Invalid admission number or password."
-        );
-
-    } else if (error.code === "auth/user-not-found") {
-
-        alert(
-            "No student account was found."
-        );
-
-    } else if (error.code === "auth/wrong-password") {
-
-        alert(
-            "Incorrect password."
-        );
-
-    } else {
-
-        alert(
-            "Unable to login. Please try again."
-        );
-
-    }
-
-}
-
-
-            /* GET STUDENT */
-
-            const studentRef =
-                doc(
-                    db,
-                    "students",
-                    user.uid
-                );
-
-
-            const studentSnap =
-                await getDoc(studentRef);
-
-
-            if (!studentSnap.exists()) {
-
-                alert(
-                    "Your account exists, but your student record was not found."
-                );
-
-                await signOut(auth);
-
-                return;
-            }
-
-
-            /* SAVE UID */
-
-            sessionStorage.setItem(
-                "studentUID",
-                user.uid
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
             );
 
+            const user = userCredential.user;
 
-            /* GO TO DASHBOARD */
+            console.log("Login successful. UID:", user.uid);
+            console.log("Firebase current user:", auth.currentUser);
 
-            alert("Login successful!");
+            // portal.js will read the same authenticated Firebase session.
+            sessionStorage.setItem("studentUID", user.uid);
 
-            window.location.href =
-                "./dashboard.html";
-
+            window.location.href = "./dashboard.html";
 
         } catch (error) {
+            console.error("Login Error:", error);
 
-            console.error(
-                "Login Error:",
-                error
-            );
-
-
-            alert(
-                "Invalid admission number or password."
-            );
-
+            if (
+                error.code === "auth/invalid-credential" ||
+                error.code === "auth/user-not-found" ||
+                error.code === "auth/wrong-password"
+            ) {
+                alert("Invalid admission number or password.");
+            } else {
+                alert("Unable to login. Please try again.");
+            }
         }
-
     });
 
 </script>

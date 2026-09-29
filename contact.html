@@ -14,61 +14,74 @@
     <!-- MOBILE OVERLAY -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
-        <div class="sidebar-logo">
-            <img src="school1.jpg" alt="Victor School">
-            <div>
-                <strong>VICTOR SCHOOL</strong>
+        <!-- SCHOOL BRAND -->
+        <div class="school-brand">
+
+            <div class="school-logo">
+                <img src="school1.jpg" alt="Victor School Logo">
+            </div>
+
+            <div class="school-brand-text">
+                <h2>VICTOR SCHOOL</h2>
                 <span>Student Portal</span>
             </div>
+
         </div>
 
+
+        <!-- NAVIGATION -->
         <nav class="sidebar-nav">
 
             <a href="dashboard.html" class="nav-link">
-                <span>⌂</span>
-                Dashboard
+                <span class="nav-icon">🏠</span>
+                <span>Dashboard</span>
             </a>
 
             <a href="profile.html" class="nav-link">
-                <span>👤</span>
-                My Profile
+                <span class="nav-icon">👤</span>
+                <span>My Profile</span>
             </a>
 
             <a href="academics.html" class="nav-link">
-                <span>📚</span>
-                Academics
+                <span class="nav-icon">📚</span>
+                <span>Academics</span>
             </a>
 
             <a href="results.html" class="nav-link">
-                <span>📊</span>
-                Results
+                <span class="nav-icon">📊</span>
+                <span>Results</span>
             </a>
 
             <a href="timetable.html" class="nav-link">
-                <span>🗓</span>
-                Timetable
+                <span class="nav-icon">📅</span>
+                <span>Timetable</span>
             </a>
 
             <a href="announcements.html" class="nav-link">
-                <span>🔔</span>
-                Announcements
+                <span class="nav-icon">📢</span>
+                <span>Announcements</span>
             </a>
 
             <a href="contact.html" class="nav-link active">
-                <span>✉</span>
-                Contact School
+                <span class="nav-icon">📞</span>
+                <span>Contact School</span>
             </a>
 
         </nav>
 
+
+        <!-- LOGOUT -->
         <div class="sidebar-bottom">
+
             <button id="logoutBtn" class="logout-btn">
-                <span>↪</span>
-                Logout
+                <span class="nav-icon">🚪</span>
+                <span>Logout</span>
             </button>
+
         </div>
 
     </aside>
@@ -89,13 +102,13 @@
                 <p>We're here to help you</p>
             </div>
 
-            <div class="topbar-student">
+            <div class="student-mini-profile">
 
                 <div class="student-avatar" id="studentAvatar">
                     S
                 </div>
 
-                <div>
+                <div class="mini-info">
                     <strong id="topStudentName">Student</strong>
                     <span id="topStudentClass">Student</span>
                 </div>
@@ -130,6 +143,7 @@
                     <form id="contactForm">
 
                         <div class="form-group">
+
                             <label for="contactName">
                                 Full Name
                             </label>
@@ -140,10 +154,12 @@
                                 placeholder="Enter your full name"
                                 required
                             >
+
                         </div>
 
 
                         <div class="form-group">
+
                             <label for="contactEmail">
                                 Email Address
                             </label>
@@ -154,10 +170,12 @@
                                 placeholder="Enter your email address"
                                 required
                             >
+
                         </div>
 
 
                         <div class="form-group">
+
                             <label for="contactSubject">
                                 Subject
                             </label>
@@ -168,6 +186,7 @@
                                 placeholder="Enter subject"
                                 required
                             >
+
                         </div>
 
 
@@ -186,9 +205,12 @@
                         </div>
 
 
-                        <button type="submit" class="send-message-btn">
+                        <button
+                            type="submit"
+                            class="send-message-btn"
+                        >
                             <span>➤</span>
-                            Send
+                            Send Message
                         </button>
 
                     </form>
@@ -211,7 +233,7 @@
                     <div class="contact-info-item">
 
                         <div class="contact-icon">
-                            ☎
+                            📞
                         </div>
 
                         <div>
@@ -226,7 +248,7 @@
                     <div class="contact-info-item">
 
                         <div class="contact-icon">
-                            ✉
+                            ✉️
                         </div>
 
                         <div>
@@ -262,13 +284,15 @@
                     <div class="contact-info-item school-hours">
 
                         <div class="contact-icon">
-                            ◷
+                            🕐
                         </div>
 
                         <div>
                             <strong>School Hours</strong>
+
                             <p>
-                                Monday - Friday: 8:00 AM - 4:00 PM
+                                Monday - Friday:
+                                8:00 AM - 4:00 PM
                             </p>
                         </div>
 
@@ -283,22 +307,30 @@
     </main>
 
 
-    <!-- FIREBASE / PORTAL SCRIPT -->
+    <!-- PORTAL SCRIPT -->
     <script type="module" src="portal.js"></script>
 
+
+    <!-- CONTACT FORM -->
     <script>
 
-        const contactForm = document.getElementById("contactForm");
+        const contactForm =
+            document.getElementById("contactForm");
 
-        contactForm.addEventListener("submit", function(event) {
+        contactForm.addEventListener(
+            "submit",
+            function(event) {
 
-            event.preventDefault();
+                event.preventDefault();
 
-            alert("Thank you for contacting Victor School. Your message has been received.");
+                alert(
+                    "Thank you for contacting Victor School. Your message has been received."
+                );
 
-            contactForm.reset();
+                contactForm.reset();
 
-        });
+            }
+        );
 
     </script>
 

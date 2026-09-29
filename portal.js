@@ -1,14 +1,16 @@
+// ======================================================
+// VICTOR SCHOOL - STUDENT PORTAL
+// ======================================================
+
 import {
     auth,
     db
-} from "../firebase.js";
-
+} from "./firebase.js";
 
 import {
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-
 
 import {
     doc,
@@ -16,263 +18,258 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-/* ==============================
-   ELEMENTS
-================================= */
+// ======================================================
+// ELEMENTS
+// ======================================================
 
 const loadingScreen =
     document.getElementById("loadingScreen");
 
-
 const topStudentName =
     document.getElementById("topStudentName");
-
 
 const topStudentClass =
     document.getElementById("topStudentClass");
 
-
 const studentAvatar =
     document.getElementById("studentAvatar");
-
 
 const logoutBtn =
     document.getElementById("logoutBtn");
 
-
 const menuBtn =
     document.getElementById("menuBtn");
 
-
 const sidebar =
     document.getElementById("sidebar");
-
 
 const sidebarOverlay =
     document.getElementById("sidebarOverlay");
 
 
-let currentStudent = null;
+// ======================================================
+// CHECK LOGIN
+// ======================================================
+
+onAuthStateChanged(auth, async (user) => {
+
+    console.log("Firebase auth state:", user);
+
+    // --------------------------------------------------
+    // No logged-in student
+    // --------------------------------------------------
+
+    if (!user) {
+
+        console.log("No logged-in student.");
+
+        window.location.href = "./index.html";
+
+        return;
+    }
 
 
-/* ==============================
-   CHECK LOGIN
-================================= */
-
-onAuthStateChanged(
-    auth,
-    async (user) => {
+    console.log("Student logged in:", user.uid);
 
 
-        /*
-         * If there is no logged-in student,
-         * send them back to the public website.
-         */
+    try {
 
-        if (!user) {
+        // --------------------------------------------------
+        // Get student document
+        // --------------------------------------------------
 
-            window.location.href =
-                "./index.html";
+        const studentRef =
+            doc(db, "students", user.uid);
+
+        const studentSnap =
+            await getDoc(studentRef);
+
+
+        console.log(
+            "Student document exists:",
+            studentSnap.exists()
+        );
+
+
+        // --------------------------------------------------
+        // Student document does not exist
+        // --------------------------------------------------
+
+        if (!studentSnap.exists()) {
+
+            console.error(
+                "Student document was not found:",
+                user.uid
+            );
+
+            alert(
+                "Your student account was found, but your student information could not be found."
+            );
+
+            await signOut(auth);
+
+            window.location.href = "./index.html";
 
             return;
+        }
+
+
+        // --------------------------------------------------
+        // Student data
+        // --------------------------------------------------
+
+        const student =
+            studentSnap.data();
+
+
+        console.log("Student data:", student);
+
+
+        const fullname =
+            student.fullname || "Student";
+
+        const studentClass =
+            student.studentClass || "Not assigned";
+
+
+        // --------------------------------------------------
+        // TOP BAR
+        // --------------------------------------------------
+
+        if (topStudentName) {
+
+            topStudentName.textContent =
+                fullname;
 
         }
 
 
-        try {
+        if (topStudentClass) {
+
+            topStudentClass.textContent =
+                studentClass;
+
+        }
 
 
-            /*
-             * Get the student's Firestore document.
-             *
-             * students/{Firebase UID}
-             */
+        if (studentAvatar) {
 
-            const studentRef =
-                doc(
-                    db,
-                    "students",
-                    user.uid
-                );
+            studentAvatar.textContent =
+                fullname
+                    .trim()
+                    .charAt(0)
+                    .toUpperCase();
+
+        }
 
 
-            const studentSnap =
-                await getDoc(studentRef);
+        // --------------------------------------------------
+        // POPULATE PAGE
+        // --------------------------------------------------
+
+        populateStudentInfo(student);
 
 
-            /*
-             * If the student's Firestore
-             * document doesn't exist,
-             * don't allow access to the portal.
-             */
+        // --------------------------------------------------
+        // HIDE LOADING SCREEN
+        // --------------------------------------------------
 
-            if (!studentSnap.exists()) {
+        hideLoading();
 
 
-                await signOut(auth);
+        console.log(
+            "Student portal loaded successfully."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Portal loading error:",
+            error
+        );
 
 
-                window.location.href =
-                    "./index.html";
+        if (loadingScreen) {
 
+            loadingScreen.innerHTML = `
 
-                return;
+                <div
+                    style="
+                        text-align:center;
+                        padding:30px;
+                        max-width:500px;
+                        margin:auto;
+                    "
+                >
 
-            }
+                    <h2>
+                        Unable to load student portal
+                    </h2>
 
-
-            currentStudent =
-                studentSnap.data();
-
-
-            const fullname =
-                currentStudent.fullname ||
-                "Student";
-
-
-            const studentClass =
-                currentStudent.studentClass ||
-                "Not assigned";
-
-
-            /*
-             * TOP BAR
-             */
-
-            if (topStudentName) {
-
-                topStudentName.textContent =
-                    fullname;
-
-            }
-
-
-            if (topStudentClass) {
-
-                topStudentClass.textContent =
-                    studentClass;
-
-            }
-
-
-            if (studentAvatar) {
-
-                studentAvatar.textContent =
-                    fullname
-                        .trim()
-                        .charAt(0)
-                        .toUpperCase();
-
-            }
-
-
-            /*
-             * Fill information
-             * on the current page.
-             */
-
-            populateStudentInfo(
-                currentStudent
-            );
-
-
-            /*
-             * Remove loading screen.
-             */
-
-            hideLoading();
-
-
-        } catch (error) {
-
-
-            console.error(
-                "Portal loading error:",
-                error
-            );
-
-
-            /*
-             * Show an error instead
-             * of leaving the student
-             * stuck on loading forever.
-             */
-
-            if (loadingScreen) {
-
-
-                loadingScreen.innerHTML = `
-
-                    <div
+                    <p
                         style="
-                            text-align:center;
-                            padding:30px;
-                            max-width:450px;
+                            margin-top:12px;
+                            color:#666;
+                            line-height:1.6;
                         "
                     >
+                        There was a problem loading your
+                        student information.
+                    </p>
 
-                        <h2>
-                            Unable to load student portal
-                        </h2>
+                    <p
+                        style="
+                            margin-top:10px;
+                            color:#999;
+                            font-size:13px;
+                        "
+                    >
+                        Error:
+                        ${error.message || "Unknown error"}
+                    </p>
 
-                        <p
-                            style="
-                                margin-top:10px;
-                                color:#666;
-                                line-height:1.6;
-                            "
-                        >
-                            Please check your internet
-                            connection and try again.
-                        </p>
+                    <button
+                        onclick="location.reload()"
+                        style="
+                            margin-top:20px;
+                            padding:12px 24px;
+                            border:0;
+                            border-radius:8px;
+                            background:#2563eb;
+                            color:white;
+                            cursor:pointer;
+                        "
+                    >
+                        Try Again
+                    </button>
 
-                        <button
-                            onclick="location.reload()"
-                            style="
-                                margin-top:20px;
-                                padding:12px 24px;
-                                border:0;
-                                border-radius:8px;
-                                background:#2563eb;
-                                color:#fff;
-                                cursor:pointer;
-                            "
-                        >
-                            Try Again
-                        </button>
+                </div>
 
-                    </div>
-
-                `;
-
-            }
+            `;
 
         }
 
     }
-);
+
+});
 
 
-/* ==============================
-   POPULATE STUDENT INFORMATION
-================================= */
+// ======================================================
+// POPULATE STUDENT INFORMATION
+// ======================================================
 
 function populateStudentInfo(student) {
 
-
     const fullname =
-        student.fullname ||
-        "Student";
-
+        student.fullname || "Student";
 
     const admission =
-        student.admissionNumber ||
-        "Not available";
-
+        student.admissionNumber || "Not available";
 
     const studentClass =
-        student.studentClass ||
-        "Not assigned";
+        student.studentClass || "Not assigned";
 
 
     const firstLetter =
@@ -282,65 +279,16 @@ function populateStudentInfo(student) {
             .toUpperCase();
 
 
-    /*
-     * Dashboard
-     */
+    // --------------------------------------------------
+    // DASHBOARD
+    // --------------------------------------------------
 
     const welcomeName =
-        document.getElementById(
-            "welcomeName"
-        );
-
+        document.getElementById("welcomeName");
 
     const classCard =
-        document.getElementById(
-            "classCard"
-        );
+        document.getElementById("classCard");
 
-
-    /*
-     * Profile
-     */
-
-    const profileAvatar =
-        document.getElementById(
-            "profileAvatar"
-        );
-
-
-    const profileName =
-        document.getElementById(
-            "profileName"
-        );
-
-
-    const profileAdmission =
-        document.getElementById(
-            "profileAdmission"
-        );
-
-
-    const profileFullname =
-        document.getElementById(
-            "profileFullname"
-        );
-
-
-    const profileAdmissionNumber =
-        document.getElementById(
-            "profileAdmissionNumber"
-        );
-
-
-    const profileClass =
-        document.getElementById(
-            "profileClass"
-        );
-
-
-    /*
-     * Dashboard welcome name
-     */
 
     if (welcomeName) {
 
@@ -352,10 +300,6 @@ function populateStudentInfo(student) {
     }
 
 
-    /*
-     * Dashboard class
-     */
-
     if (classCard) {
 
         classCard.textContent =
@@ -364,9 +308,30 @@ function populateStudentInfo(student) {
     }
 
 
-    /*
-     * Profile avatar
-     */
+    // --------------------------------------------------
+    // PROFILE
+    // --------------------------------------------------
+
+    const profileAvatar =
+        document.getElementById("profileAvatar");
+
+    const profileName =
+        document.getElementById("profileName");
+
+    const profileAdmission =
+        document.getElementById("profileAdmission");
+
+    const profileFullname =
+        document.getElementById("profileFullname");
+
+    const profileAdmissionNumber =
+        document.getElementById(
+            "profileAdmissionNumber"
+        );
+
+    const profileClass =
+        document.getElementById("profileClass");
+
 
     if (profileAvatar) {
 
@@ -376,10 +341,6 @@ function populateStudentInfo(student) {
     }
 
 
-    /*
-     * Profile name
-     */
-
     if (profileName) {
 
         profileName.textContent =
@@ -387,10 +348,6 @@ function populateStudentInfo(student) {
 
     }
 
-
-    /*
-     * Profile admission number
-     */
 
     if (profileAdmission) {
 
@@ -426,17 +383,15 @@ function populateStudentInfo(student) {
 }
 
 
-/* ==============================
-   LOGOUT
-================================= */
+// ======================================================
+// LOGOUT
+// ======================================================
 
 if (logoutBtn) {
-
 
     logoutBtn.addEventListener(
         "click",
         async () => {
-
 
             const confirmed =
                 confirm(
@@ -453,22 +408,19 @@ if (logoutBtn) {
 
             try {
 
-
                 await signOut(auth);
-
 
                 window.location.href =
                     "./index.html";
 
+            }
 
-            } catch (error) {
-
+            catch (error) {
 
                 console.error(
                     "Logout error:",
                     error
                 );
-
 
                 alert(
                     "Unable to logout. Please try again."
@@ -482,59 +434,48 @@ if (logoutBtn) {
 }
 
 
-/* ==============================
-   SIDEBAR NAVIGATION
-================================= */
+// ======================================================
+// SIDEBAR NAVIGATION
+// ======================================================
 
 const navLinks =
-    document.querySelectorAll(
-        ".nav-link"
+    document.querySelectorAll(".nav-link");
+
+
+navLinks.forEach((link) => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            closeSidebar();
+
+        }
     );
 
-
-navLinks.forEach(
-    (link) => {
+});
 
 
-        link.addEventListener(
-            "click",
-            () => {
-
-                closeSidebar();
-
-            }
-        );
-
-    }
-);
-
-
-/* ==============================
-   MOBILE MENU
-================================= */
+// ======================================================
+// MOBILE MENU
+// ======================================================
 
 if (menuBtn) {
-
 
     menuBtn.addEventListener(
         "click",
         () => {
 
-
             if (sidebar) {
 
-                sidebar.classList.add(
-                    "open"
-                );
+                sidebar.classList.add("open");
 
             }
 
 
             if (sidebarOverlay) {
 
-                sidebarOverlay.classList.add(
-                    "show"
-                );
+                sidebarOverlay.classList.add("show");
 
             }
 
@@ -544,12 +485,11 @@ if (menuBtn) {
 }
 
 
-/* ==============================
-   CLOSE SIDEBAR
-================================= */
+// ======================================================
+// CLOSE SIDEBAR
+// ======================================================
 
 if (sidebarOverlay) {
-
 
     sidebarOverlay.addEventListener(
         "click",
@@ -561,39 +501,31 @@ if (sidebarOverlay) {
 
 function closeSidebar() {
 
-
     if (sidebar) {
 
-        sidebar.classList.remove(
-            "open"
-        );
+        sidebar.classList.remove("open");
 
     }
 
 
     if (sidebarOverlay) {
 
-        sidebarOverlay.classList.remove(
-            "show"
-        );
+        sidebarOverlay.classList.remove("show");
 
     }
 
 }
 
 
-/* ==============================
-   HIDE LOADING
-================================= */
+// ======================================================
+// HIDE LOADING
+// ======================================================
 
 function hideLoading() {
 
-
     if (loadingScreen) {
 
-        loadingScreen.classList.add(
-            "hidden"
-        );
+        loadingScreen.classList.add("hidden");
 
     }
 
